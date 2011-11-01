@@ -1,0 +1,17 @@
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/**/*
+public/stylesheets/compiled/
+config/database.yml
+config/settings.yml
+.sass-cache/
+public/system/
+tmp
+coverage
+database.sql
+database~old.sql
+config/development.sphinx.conf
+db/sphinx/
+log/searchd.development.pid
+*.swp
