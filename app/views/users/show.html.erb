@@ -1,0 +1,28 @@
+<div class="container_16" style="background-color:white;">
+  <div class="grid_14">
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%= @user.password %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
+
+<IMG WIDTH=500 SRC="/images/word_cloud.jpg"></IMG>
+
+  </div>
+</div>
