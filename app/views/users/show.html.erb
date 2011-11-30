@@ -1,28 +1,25 @@
-<div class="container_16" style="background-color:white;">
+<div class="container_16" style="background-color:white;height:640px;">
+  <div class="grid_14">
+<%= notice %>
+  </div>
+  <div class="clear"></div>
+  <div class="grid_14">
+  </div>
+  <%= @user.name %> |
+  <%= @user.email %> |
+<%= link_to 'Edit', edit_user_path(@user) %> ||
+<%= link_to 'Users', users_path %>
+  <div class="clear"></div>
+
   <div class="grid_14">
 
-<p id="notice"><%= notice %></p>
+<BR />
+<BR />
+<span style="padding:10px;font-size:24px;"><b>Learning Areas</b></span>
+<BR />
+<BR />
 
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-
-<p>
-  <b>Password:</b>
-  <%= @user.password %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
-
-<IMG WIDTH=500 SRC="/images/word_cloud.jpg"></IMG>
+<IMG WIDTH=600 SRC="/images/word_cloud.jpg"></IMG>
 
   </div>
 </div>
