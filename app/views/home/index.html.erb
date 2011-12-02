@@ -21,6 +21,21 @@
   </div>
   <div class="grid_7">
 
+  <% if @user_errors %>
+    <% if @user_errors.kind_of?(String) %>
+      <%= @user_errors %>
+    <% elsif @user_errors.any? %>
+    <div id="errorExplanation">
+      <h2><%= pluralize(@user_errors.count, "error") %></h2>
+      <ul>
+      <% @user_errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% end %>
+  <% end %>
+
 <div style="margin:4px;padding:2px;border:2px solid blue;">
 <h2 style="padding:2px;">Login</h2>
 <%= render 'login_user_form' %>
