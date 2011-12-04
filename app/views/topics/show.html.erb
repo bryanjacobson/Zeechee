@@ -1,0 +1,49 @@
+<div class="container_16" style="background-color:white;height:500px;">
+  <div class="grid_9">
+
+<p id="notice"><%= notice %></p>
+
+<% if @parent %>
+  <b>Parent:</b>
+  <%= image_tag(default_topic_icon(@parent.icon), :width => '50') %>
+  <%= link_to @parent.title, @parent %>
+  <BR />
+<% end %>
+
+
+<p>
+  <%= image_tag(default_topic_icon(@topic.icon), :width => '100') %>
+  <b>Title:</b>
+  <%= @topic.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @topic.description %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @topic.user_id %>
+</p>
+
+<p>
+  <b>Ancestry:</b>
+  <%= @topic.ancestry %>
+</p>
+
+<p>
+  <b>Children:</b>
+  <% @children.each do |child| %>
+    <%= image_tag(default_topic_icon(child.icon), :width => '100') %>
+    <%= link_to child.title, child %>
+    <BR />
+  <% end %>
+</p>
+
+<%= link_to "Add Child Topic", new_topic_path(:parent_id => @topic) %> |
+<%= link_to 'Edit', edit_topic_path(@topic) %> |
+<%= link_to 'Back', topics_path %>
+
+  </div>
+</div>

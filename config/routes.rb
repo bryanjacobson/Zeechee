@@ -1,4 +1,6 @@
 Learnshare::Application.routes.draw do
+  resources :topics
+
   resources :users
 
   get "home/index"
@@ -62,4 +64,5 @@ Learnshare::Application.routes.draw do
   resource :session
   match '/login' => "sessions#new", :as => "login"
   match '/logout' => "sessions#destroy", :as => "logout"
+  match '/topics' => "topics#index", :as => "index"
 end

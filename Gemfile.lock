@@ -28,6 +28,8 @@ GEM
       activemodel (= 3.0.9)
       activesupport (= 3.0.9)
     activesupport (3.0.9)
+    ancestry (1.2.4)
+      activerecord (>= 2.2.2)
     arel (2.0.10)
     builder (2.1.2)
     erubis (2.6.6)
@@ -74,5 +76,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ancestry
   rails (= 3.0.9)
   sqlite3
