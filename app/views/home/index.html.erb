@@ -35,15 +35,24 @@
     <% end %>
   <% end %>
 
-<div style="margin:4px;padding:2px;border:2px solid blue;">
-<h2 style="padding:2px;">Login</h2>
-<%= render 'login_user_form' %>
-</div>
+<% if logged_in? %>
 
-<div style="margin:4px;padding:2px;border:2px solid blue;">
-<h2 style="padding:2px;">Register</h2>
-<%= render 'register_user_form' %>
-</div>
+  <h3>Topics</h3>
+
+  <%= render :partial => "topics/topic_list" %>
+
+<% else %>
+
+  <div style="margin:4px;padding:2px;border:2px solid blue;">
+  <h3 style="padding:2px;">Login</h3>
+  <%= render 'login_user_form' %>
+  </div>
+  
+  <div style="margin:4px;padding:2px;border:2px solid blue;">
+  <h3 style="padding:2px;">Register</h3>
+  <%= render 'register_user_form' %>
+  </div>
+  
+<% end %>
 
 </div>
-

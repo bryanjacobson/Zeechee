@@ -16,7 +16,13 @@
 <body style="background-color:black;">
 <div class="container_16" style="background-color:white;height:540px;">
 
+
 <div class="grid_16">
+
+<%= link_to_unless_current 'LearnShare', root_path %> |
+<%= link_to_unless_current 'Topics', topics_path %> |
+<%= link_to_unless_current 'Users', users_path %> |
+
 <% if logged_in? %>
   Welcome <%= current_user.name %> |
   <%= link_to 'Sign Out', logout_path %>

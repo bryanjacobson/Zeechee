@@ -2,27 +2,7 @@
 
 <h1>Topics</h1>
 
-<table>
-  <tr>
-    <th>Icon</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th>User</th>
-    <th>Ancestry</th>
-  </tr>
-
-<% @topics.each do |topic| %>
-  <tr>
-    <td>
-      <%= image_tag(default_topic_icon(topic.icon), :width => '100') %>
-    </td>
-    <td><%= link_to topic.title, topic %></td>
-    <td><%= topic.description %></td>
-    <td><%= topic.user_id %></td>
-    <td><%= topic.ancestry %></td>
-  </tr>
-<% end %>
-</table>
+<%= render 'topic_list' %>
 
 <br />
 

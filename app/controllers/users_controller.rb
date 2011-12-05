@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :authenticate, :except => [:index, :show]
+
   # GET /users
   # GET /users.xml
   def index
