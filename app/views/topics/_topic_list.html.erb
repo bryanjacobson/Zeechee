@@ -3,7 +3,6 @@
     <th>Icon</th>
     <th>Title</th>
     <th>Description</th>
-    <th>User</th>
   </tr>
 
 <% @topics.each do |topic| %>
@@ -11,11 +10,12 @@
     <td>
       <%= image_tag(default_topic_icon(topic.icon), :width => '100') %>
     </td>
-    <td><%= link_to topic.title, topic %></td>
-    <td><%= topic.description %></td>
     <td>
-      <%= topic.user.name %>
+      <span style="padding:25px;font-size:32px;">
+      <%= link_to topic.title, topic %>
+      </span>
     </td>
+    <td><%= topic.description %></td>
   </tr>
 <% end %>
 </table>
