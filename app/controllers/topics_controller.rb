@@ -62,6 +62,10 @@ class TopicsController < ApplicationController
   # PUT /topics/1.xml
   def update
     @topic = Topic.find(params[:id])
+    @up = params[:up]
+    if @up == "1"
+      @topic.parent = @topic.parent.parent
+    end
 
     respond_to do |format|
       if @topic.update_attributes(params[:topic])

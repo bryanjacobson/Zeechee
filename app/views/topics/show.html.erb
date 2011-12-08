@@ -44,4 +44,18 @@
 <%= link_to 'Edit', edit_topic_path(@topic) %> |
 <%= link_to 'Back', topics_path %>
 
+<% if @parent %>
+  <%= button_to 'Move Topic Up To Be Peer Of Parent', {:action => "update", :id => @topic.id, :up => "1"},
+         :confirm => "Are you sure?", :method => :put %>
+<% end %>
+
+<% if @topic.has_siblings? %>
+  <h4>Siblings</h4>
+  <% @topic.siblings.each do |sib| %>
+    <% if sib.id != @topic.id %>
+      <%= sib.title %><BR />
+    <% end %>
+  <% end %>
+<% end %>
+
   </div>

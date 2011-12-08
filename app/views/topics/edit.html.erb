@@ -2,6 +2,13 @@
 
 <h1>Editing topic</h1>
 
+<% if @topic.parent %>
+  <b>Parent:</b>
+  <%= image_tag(default_topic_icon(@topic.parent.icon), :width => '50') %>
+  <%= link_to @topic.parent.title, @topic.parent %>
+  <BR />
+<% end %>
+
 <%= render 'form' %>
 
 <%= link_to 'Show', @topic %> |
