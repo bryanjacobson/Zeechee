@@ -1,14 +1,55 @@
-  <div class="grid_9">
+<div class="grid_5">
+  <BR />
+  <span style="font-size:18px;">
+    Grand Parent:<BR />
+    <% if @parent %>
+      <% if @parent.is_root? %>
+        <%= link_to '=TOP=', topics_path %>
+      <% else %>
+        <%= image_tag(default_topic_icon(@parent.parent.icon), :width => '50') %>
+        <%= link_to @parent.parent.title, @parent %>
+      <% end %>
+    <% end %>
+  </span>
+</div>
+<div class="grid_5">
+  <BR />
+  <span style="font-size:18px;">
+    Parent:<BR />
+  </span>
+  <% if @parent %>
+    <%= image_tag(default_topic_icon(@parent.icon), :width => '50') %>
+    <%= link_to @parent.title, @parent %>
+  <BR />
+
+    <%= button_to "Move Up To Parent's Level", {:action => "update", :id => @topic.id, :up => "1"},
+         :confirm => "Are you sure?", :method => :put %>
+  <% else %>
+    <%= link_to '=TOP=', topics_path %>
+  <% end %>
+</div>
+<div class="grid_5">
+  <BR />
+  <span style="font-size:18px;">
+    Topic:
+  </span>
+  <%= @topic.title %>
+  <% if @topic.has_siblings? %>
+    <%= form_for(@topic) do |f| %>
+      <div class="field">
+	Topics at the same level:<BR />
+	<%= f.collection_select :parent_id, @topic.siblings, :id, :title %>
+      </div>
+      <div class="actions">
+        <%= f.submit 'Move Under' %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<div class="clear"></div>
+<div class="grid_16">
 
 <p id="notice"><%= notice %></p>
-
-<% if @parent %>
-  <b>Parent:</b>
-  <%= image_tag(default_topic_icon(@parent.icon), :width => '50') %>
-  <%= link_to @parent.title, @parent %>
-  <BR />
-<% end %>
-
 
 <p>
   <%= image_tag(default_topic_icon(@topic.icon), :width => '100') %>
@@ -44,18 +85,4 @@
 <%= link_to 'Edit', edit_topic_path(@topic) %> |
 <%= link_to 'Back', topics_path %>
 
-<% if @parent %>
-  <%= button_to 'Move Topic Up To Be Peer Of Parent', {:action => "update", :id => @topic.id, :up => "1"},
-         :confirm => "Are you sure?", :method => :put %>
-<% end %>
-
-<% if @topic.has_siblings? %>
-  <h4>Siblings</h4>
-  <% @topic.siblings.each do |sib| %>
-    <% if sib.id != @topic.id %>
-      <%= sib.title %><BR />
-    <% end %>
-  <% end %>
-<% end %>
-
-  </div>
+</div>
