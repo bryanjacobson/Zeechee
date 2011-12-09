@@ -1,3 +1,4 @@
+<% short_title = truncate(@topic.title, :length => 12, :omission => "*") %>
 <div class="grid_5">
   <BR />
   <span style="font-size:18px;">
@@ -22,8 +23,8 @@
     <%= link_to @parent.title, @parent %>
   <BR />
 
-    <%= button_to "Move Up To Parent's Level", {:action => "update", :id => @topic.id, :up => "1"},
-         :confirm => "Are you sure?", :method => :put %>
+    <%= button_to("Move '" + short_title + "' Up To Parent's Level", {:action => "update", :id => @topic.id, :up => "1"},
+         :confirm => "Are you sure?", :method => :put) %>
   <% else %>
     <%= link_to '=TOP=', topics_path %>
   <% end %>
@@ -41,7 +42,7 @@
 	<%= f.collection_select :parent_id, @topic.siblings, :id, :title %>
       </div>
       <div class="actions">
-        <%= f.submit 'Move Under' %>
+        <%= f.submit "Move '" + short_title + "' Under" %>
       </div>
     <% end %>
   <% end %>
@@ -52,9 +53,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <%= image_tag(default_topic_icon(@topic.icon), :width => '100') %>
+  <%= image_tag(default_topic_icon(@topic.icon), :height => '50') %>
   <b>Title:</b>
   <%= @topic.title %>
+  <span style="padding-left:90px;">
+    <b>User:</b>
+    <%= @topic.user.name %>
+  </span>
+  <span style="padding:30px;">
+    <b>Ancestry:</b>
+    <%= @topic.ancestry %>
+  </span>
 </p>
 
 <p>
@@ -63,19 +72,10 @@
 </p>
 
 <p>
-  <b>User:</b>
-  <%= @topic.user.name %>
-</p>
-
-<p>
-  <b>Ancestry:</b>
-  <%= @topic.ancestry %>
-</p>
-
-<p>
   <b>Children:</b>
+  <BR />
   <% @children.each do |child| %>
-    <%= image_tag(default_topic_icon(child.icon), :width => '100') %>
+    <%= image_tag(default_topic_icon(child.icon), :height => '40') %>
     <%= link_to child.title, child %>
     <BR />
   <% end %>

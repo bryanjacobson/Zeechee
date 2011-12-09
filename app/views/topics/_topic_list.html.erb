@@ -2,20 +2,20 @@
   <tr>
     <th>Icon</th>
     <th>Title</th>
-    <th>Description</th>
   </tr>
 
 <% @topics.each do |topic| %>
   <tr>
     <td>
-      <%= image_tag(default_topic_icon(topic.icon), :width => '100') %>
+      <span style="padding:5px;" title="<%= topic.description %>">
+      <%= image_tag(default_topic_icon(topic.icon), :height => '50') %>
+      </span>
     </td>
     <td>
-      <span style="padding:25px;font-size:32px;">
+      <span style="padding:5px;font-size:32px;" title="<%= topic.description %>">
       <%= link_to topic.title, topic %>
       </span>
     </td>
-    <td><%= topic.description %></td>
   </tr>
 <% end %>
 </table>
