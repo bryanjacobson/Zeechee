@@ -7,7 +7,7 @@
       <% if @parent.is_root? %>
         <%= link_to '=TOP=', topics_path %>
       <% else %>
-        <%= image_tag(default_topic_icon(@parent.parent.icon), :width => '50') %>
+        <%= image_tag(default_topic_icon(@parent.parent.icon), :height => '40') %>
         <%= link_to @parent.parent.title, @parent %>
       <% end %>
     <% end %>
@@ -19,7 +19,7 @@
     Parent:<BR />
   </span>
   <% if @parent %>
-    <%= image_tag(default_topic_icon(@parent.icon), :width => '50') %>
+    <%= image_tag(default_topic_icon(@parent.icon), :height => '40') %>
     <%= link_to @parent.title, @parent %>
   <BR />
 
@@ -32,8 +32,9 @@
 <div class="grid_5">
   <BR />
   <span style="font-size:18px;">
-    Topic:
+    Topic:<BR />
   </span>
+  <%= image_tag(default_topic_icon(@topic.icon), :height => '40') %>
   <%= @topic.title %>
   <% if @topic.has_siblings? %>
     <%= form_for(@topic) do |f| %>
@@ -54,7 +55,7 @@
 
 <p>
   <span title="<%= @topic.icon_credit %>">
-    <%= image_tag(default_topic_icon(@topic.icon), :height => '50') %>
+    <%= image_tag(default_topic_icon(@topic.icon), :height => '60') %>
   </span>
   <b>Title:</b>
   <%= @topic.title %>
