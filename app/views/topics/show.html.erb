@@ -53,7 +53,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <%= image_tag(default_topic_icon(@topic.icon), :height => '50') %>
+  <span title="<%= @topic.icon_credit %>">
+    <%= image_tag(default_topic_icon(@topic.icon), :height => '50') %>
+  </span>
   <b>Title:</b>
   <%= @topic.title %>
   <span style="padding-left:90px;">
