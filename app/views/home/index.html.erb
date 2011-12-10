@@ -1,20 +1,20 @@
 
   <div class="grid_9">
 
-<div style="width:460px;padding:25px;font-size:36px;color:navy;">
+<div class="home" style="color:navy;">
 <em>Welcome to <b>LearnShare</b></em>
 </div>
 
-<div style="width:460px;padding:25px;font-size:36px;color:white;background-color:Lime;">
+<div class="home" style="background-color:Lime;">
 <b>Learn</b> things that matter
 </div>
 
-<div style="width:460px;padding:25px;font-size:36px;color:white;background-color:Teal;">
+<div class="home" style="background-color:Teal;">
 <b>Share</b> what <em>you</em> know
 </div>
 
-<div OnClick="document.location='/topics'" style="width:460px;padding:25px;font-size:36px;color:white;background-color:Orange;">
-<b>Explore</b> <em>357</em> topics
+<div class="home" OnClick="document.location='/topics'" style="background-color:Orange;">
+<b>Explore</b> <em><%= Topic.all.count %></em> topics
 </div>
 
   </div>
