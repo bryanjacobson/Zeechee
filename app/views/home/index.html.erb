@@ -5,13 +5,14 @@
 <em>Welcome to <b>LearnShare</b></em>
 </div>
 
-<div class="home" style="background-color:Lime;">
+<div class="home" style="background-color:Lime;" OnClick="document.location='/topics'">
 <b>Learn</b> things that matter
 </div>
 
-<div class="home" style="background-color:Teal;">
+<div class="home" style="background-color:Teal;" OnClick="document.location='/topics'">
 <b>Share</b> what <em>you</em> know
 </div>
+
 
 <div class="home" OnClick="document.location='/topics'" style="background-color:Orange;">
 <b>Explore</b> <em><%= Topic.all.count %></em> topics
@@ -37,7 +38,7 @@
 
 <% if logged_in? %>
 
-<div class="home" style="width:326px;background-color:Coral;">
+<div class="home" style="width:326px;background-color:Coral;" OnClick="document.location='/topics'">
 <b>LearnShare</b> is a place to learn and share what you know.
 <br />
 <br />
