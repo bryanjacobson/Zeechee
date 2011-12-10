@@ -1,6 +1,6 @@
 <% short_title = truncate(@topic.title, :length => 12, :omission => "*") %>
 <div class="grid_4">
-  <b>Topics:</b><BR />
+  <b>Topic Hierarchy:</b><BR />
   <%= link_to '=TOP=', topics_path %>
   <BR />
   <% @topic.ancestors.each do |topic| %>
@@ -45,6 +45,8 @@
 <div class="grid_12">
 
 <p id="notice"><%= notice %></p>
+
+<b>Topic:</b><BR />
 
 <p>
   <span title="<%= @topic.icon_credit %>">
