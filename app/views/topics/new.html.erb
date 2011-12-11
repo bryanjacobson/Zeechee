@@ -1,9 +1,18 @@
-  <div class="grid_9">
+<div class="grid_9">
 
-<h1>New topic</h1>
+  Topic:
+  <%= link_to '=TOP=', topics_path %>
+  <% @topic.ancestors.each do |topic| %>
+    / <%= link_to topic.title, topic %>
+  <% end %>
 
-<%= render 'form' %>
+  <br />
+  <br />
 
-<%= link_to 'Back', topics_path %>
+  <h1>New topic</h1>
 
-  </div>
+  <%= render 'form' %>
+
+  <%= link_to 'Cancel', topics_path %>
+
+</div>

@@ -12,6 +12,7 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @topic %> |
-<%= link_to 'Back', topics_path %>
+<%= link_to 'Back', topics_path %> |
+<%= link_to 'Destroy', @topic, :confirm => 'Are you sure?', :method => :delete %>
 
   </div>

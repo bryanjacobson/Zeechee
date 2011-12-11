@@ -29,6 +29,9 @@ class TopicsController < ApplicationController
   # GET /topics/new.xml
   def new
     @topic = Topic.new(:parent_id => params[:parent_id])
+    if params[:parent_id]
+      @parent = Topic.find(params[:parent_id])
+    end
 
     respond_to do |format|
       format.html # new.html.erb
