@@ -1,89 +1,52 @@
-<% short_title = truncate(@topic.title, :length => 12, :omission => "*") %>
-<div class="grid_4">
-  <b>Topic Hierarchy:</b><BR />
+<div class="grid_16">
+  Natigate Topics:
   <%= link_to '=TOP=', topics_path %>
-  <BR />
   <% @topic.ancestors.each do |topic| %>
-    <%= image_tag(default_topic_icon(topic.icon), :height => '40') %>
-    <%= link_to topic.title, topic %>
+      / <%= link_to topic.title, navigate_path(topic) %>
+  <% end %>
+  <br />
+  <br />
+
+  <p id="notice"><%= notice %></p>
+  
+  <b>Topic:</b><BR />
+  
+  <p>
+    <span title="<%= @topic.icon_credit %>">
+      <%= image_tag(default_topic_icon(@topic.icon), :height => '60') %>
+    </span>
+    <b>Title:</b>
+    <%= @topic.title %>
+    <span style="padding-left:90px;">
+      <b>User:</b>
+      <%= @topic.user.name %>
+    </span>
+    <span style="padding:30px;">
+      <b>Ancestry:</b>
+      <%= @topic.ancestry %>
+    </span>
+  </p>
+  
+  <p>
+    <b>Description:</b>
+    <%= @topic.description %>
+  </p>
+  
+  <p>
+    <b>Sub Topics:</b>
     <BR />
-  <% end %>
-  <% if @parent %>
-     <%= button_to("Move '" + short_title + "' Up a Level", {:action => "update", :id => @topic.id, :up => "1"},
-         :confirm => "Are you sure?", :method => :put) %>
-  <% end %>
-
-  <hr />
-  <b>This level:</b><BR />
-
-  <% @topic.siblings.each do |topic| %>
-    <% if @topic.id == topic.id %>
-      <div style="background-color:Bisque;">
-        <%= image_tag(default_topic_icon(topic.icon), :height => '40') %>
-        <b><%= link_to topic.title, topic %></b>
-      </div>
-    <% else %>
-      <%= image_tag(default_topic_icon(topic.icon), :height => '40') %>
-      <%= link_to topic.title, topic %>
+    <% @children.each do |child| %>
+      <%= image_tag(default_topic_icon(child.icon), :height => '40') %>
+      <%= link_to child.title, child %>
+      <BR />
     <% end %>
-    <BR />
-  <% end %>
-
-  <% if @topic.has_siblings? %>
-    <%= form_for(@topic) do |f| %>
-      <div class="field">
-	Move <b><%= @topic.title %></b> under (select):<BR />
-	<%= f.collection_select :parent_id, @topic.siblings, :id, :title %>
-      </div>
-      <div class="actions">
-        <%= f.submit "Submit" %>
-      </div>
-    <% end %>
-  <% end %>
-</div>
-
-<div class="grid_12">
-
-<p id="notice"><%= notice %></p>
-
-<b>Topic:</b><BR />
-
-<p>
-  <span title="<%= @topic.icon_credit %>">
-    <%= image_tag(default_topic_icon(@topic.icon), :height => '60') %>
-  </span>
-  <b>Title:</b>
-  <%= @topic.title %>
-  <span style="padding-left:90px;">
-    <b>User:</b>
-    <%= @topic.user.name %>
-  </span>
-  <span style="padding:30px;">
-    <b>Ancestry:</b>
-    <%= @topic.ancestry %>
-  </span>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @topic.description %>
-</p>
-
-<p>
-  <b>Sub Topics:</b>
+  </p>
+  
+  <div style="font-size:16px;padding:5px;border-style:solid;border-width:1px;font-weight:bold;background-color:Bisque;width:138px;">
+  <%= link_to "Add Sub-Topic", new_topic_path(:parent_id => @topic.id), :method => :get %>
+  </div>
   <BR />
-  <% @children.each do |child| %>
-    <%= image_tag(default_topic_icon(child.icon), :height => '40') %>
-    <%= link_to child.title, child %>
-    <BR />
-  <% end %>
-</p>
-
-<div style="font-size:16px;padding:5px;border-style:solid;border-width:1px;font-weight:bold;background-color:Bisque;width:138px;">
-<%= link_to "Add Sub-Topic", new_topic_path(:parent_id => @topic.id), :method => :get %>
-</div>
-<BR />
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
-
+  <%= link_to 'Edit', edit_topic_path(@topic) %> |
+  <%= link_to 'Back', topics_path %>
+  
 </div>

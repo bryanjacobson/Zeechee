@@ -1,22 +1,26 @@
-  <div class="grid_16">
+<div class="grid_16" style="background-color:white;">
 
-<h2>Navigate Topic Catalog</h2>
-
-Topic:
-<%= link_to '=TOP=', topics_path %>
-  <% if @topic %>
-  <% @topic.ancestors.each do |topic| %>
-    / <%= link_to topic.title, navigate_path(topic) %>
+  <h2>Navigate Topic Catalog</h2>
+  
+  Topic:
+  <%= link_to '=TOP=', topics_path %>
+    <% if @topic %>
+    <% @topic.ancestors.each do |topic| %>
+      / <%= link_to topic.title, navigate_path(topic) %>
+    <% end %>
   <% end %>
-<% end %>
-
-<br />
-<br />
-
-<%= render 'topic_list' %>
-
-<br />
-
-<%= link_to 'Add Top Level Topic', new_topic_path %>
-
-  </div>
+  
+  <br />
+  <br />
+  
+  <%= render 'topic_list' %>
+  
+  <br />
+  
+  <% if @topic %>
+    <%= link_to 'Add Subtopic', new_topic_path(:parent_id => @topic.id) %>
+  <% else %>
+    <%= link_to 'Add Top Level Topic', new_topic_path %>
+  <% end %>
+  
+</div>

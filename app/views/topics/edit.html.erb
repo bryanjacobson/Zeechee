@@ -1,18 +1,66 @@
-  <div class="grid_9">
+<div class="grid_16">
+  Topic:
+  <%= link_to '=TOP=', topics_path %>
+  <% @topic.ancestors.each do |topic| %>
+      / <%= link_to topic.title, navigate_path(topic) %>
+  <% end %>
+  <br />
+  <br />
+</div>
+<div class="clear"></div>
 
-<h1>Editing topic</h1>
-
-<% if @topic.parent %>
-  <b>Parent:</b>
-  <%= image_tag(default_topic_icon(@topic.parent.icon), :width => '50') %>
-  <%= link_to @topic.parent.title, @topic.parent %>
+<div class="grid_6">
+  <% short_title = truncate(@topic.title, :length => 18, :omission => "*") %>
+  <b>Topic Hierarchy:</b><BR />
+  <%= link_to '=TOP=', topics_path %>
   <BR />
-<% end %>
+  <% @topic.ancestors.each do |topic| %>
+    <%= image_tag(default_topic_icon(topic.icon), :height => '40') %>
+    <%= link_to topic.title, navigate_path(topic) %>
+    <BR />
+  <% end %>
+  <% if @topic.parent %>
+     <%= button_to("Move '" + short_title + "' Up a Level", {:action => "update", :id => @topic.id, :up => "1"},
+         :confirm => "Are you sure?", :method => :put) %>
+  <% end %>
 
-<%= render 'form' %>
+  <hr />
+  <b>This level:</b><BR />
 
-<%= link_to 'Show', @topic %> |
-<%= link_to 'Back', topics_path %> |
-<%= link_to 'Destroy', @topic, :confirm => 'Are you sure?', :method => :delete %>
+  <% @topic.siblings.each do |topic| %>
+    <% if @topic.id == topic.id %>
+      <div style="background-color:Bisque;">
+        <%= image_tag(default_topic_icon(topic.icon), :height => '40') %>
+        <b><%= link_to topic.title, navigate_path(topic) %></b>
+      </div>
+    <% else %>
+      <%= image_tag(default_topic_icon(topic.icon), :height => '40') %>
+      <%= link_to topic.title, navigate_path(topic) %>
+    <% end %>
+    <BR />
+  <% end %>
 
-  </div>
+  <% if @topic.has_siblings? %>
+    <%= form_for(@topic) do |f| %>
+      <div class="field">
+        Move <b><%= @topic.title %></b> under (select):<BR />
+        <%= f.collection_select :parent_id, @topic.siblings, :id, :title %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Submit" %>
+      </div>
+    <% end %>
+  <% end %>
+
+</div>
+<div class="grid_10">
+
+  <h1>Editing topic</h1>
+  
+  <%= render 'form' %>
+  
+  <%= link_to 'Show', @topic %> |
+  <%= link_to 'Back', topics_path %> |
+  <%= link_to 'Destroy', @topic, :confirm => 'Are you sure?', :method => :delete %>
+  
+</div>
