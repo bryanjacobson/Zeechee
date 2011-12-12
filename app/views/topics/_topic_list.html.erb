@@ -1,19 +1,37 @@
+<% if @topic %>
+  <span style="padding:5px;" title="<%= @topic.description %>">
+    <%= image_tag(default_topic_icon(@topic.icon), :height => '50') %>
+  </span>
+  <span style="padding:5px;font-size:32px;" title="<%= @topic.description %>">
+    <%= link_to @topic.title, navigate_path(@topic) %>
+  </span>
+  <span style="font-size:20px;" title="<%= @topic.description %>">
+    <%= link_to 'Show', @topic %>
+  </span>
+<% else %>
+  <span style="padding:5px;font-size:32px;">
+    =TOP=
+  </span>
+<% end %>
+
+<hr />
+<h4>Sub-Topics:<h4>
+
 <table>
-  <tr>
-    <th>Icon</th>
-    <th>Title</th>
-  </tr>
 
 <% @topics.each do |topic| %>
   <tr>
     <td>
       <span style="padding:5px;" title="<%= topic.description %>">
-      <%= image_tag(default_topic_icon(topic.icon), :height => '50') %>
+        <%= image_tag(default_topic_icon(topic.icon), :height => '50') %>
       </span>
     </td>
     <td>
       <span style="padding:5px;font-size:32px;" title="<%= topic.description %>">
-      <%= link_to topic.title, topic %>
+        <%= link_to topic.title, navigate_path(topic) %>
+      </span>
+      <span style="font-size:20px;" title="<%= topic.description %>">
+        <%= link_to 'Show', topic %>
       </span>
     </td>
   </tr>

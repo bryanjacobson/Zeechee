@@ -65,4 +65,7 @@ Learnshare::Application.routes.draw do
   match '/login' => "sessions#new", :as => "login"
   match '/logout' => "sessions#destroy", :as => "logout"
   match '/topics' => "topics#index", :as => "index"
+
+  # Topics catalog navigation
+  match '/topics/index/:id' => 'topics#index', :as => 'navigate'
 end

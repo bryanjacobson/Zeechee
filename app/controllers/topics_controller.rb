@@ -4,7 +4,12 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.xml
   def index
-    @topics = Topic.roots
+    if params[:id]
+      @topic =  Topic.find(params[:id])
+      @topics = @topic.children
+    else
+      @topics = Topic.roots
+    end
 
     respond_to do |format|
       format.html # index.html.erb

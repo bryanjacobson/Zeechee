@@ -3,7 +3,7 @@
   Topic:
   <%= link_to '=TOP=', topics_path %>
   <% @topic.ancestors.each do |topic| %>
-    / <%= link_to topic.title, topic %>
+    / <%= link_to topic.title, navigate_path(topic) %>
   <% end %>
 
   <br />

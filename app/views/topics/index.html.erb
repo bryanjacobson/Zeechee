@@ -1,6 +1,17 @@
   <div class="grid_16">
 
-<h1>Topics</h1>
+<h2>Navigate Topic Catalog</h2>
+
+Topic:
+<%= link_to '=TOP=', topics_path %>
+  <% if @topic %>
+  <% @topic.ancestors.each do |topic| %>
+    / <%= link_to topic.title, navigate_path(topic) %>
+  <% end %>
+<% end %>
+
+<br />
+<br />
 
 <%= render 'topic_list' %>
 
