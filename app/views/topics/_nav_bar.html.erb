@@ -1,0 +1,10 @@
+Navigate Topics:
+<%= link_to '=TOP=', topics_path %>
+<% if @topic %>
+  <% @topic.ancestors.each do |topic| %>
+    / <%= link_to topic.title, navigate_path(topic) %>
+  <% end %>
+    / <%= @topic.title %>
+<% end %>
+<br />
+<br />

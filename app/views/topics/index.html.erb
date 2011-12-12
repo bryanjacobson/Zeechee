@@ -1,17 +1,10 @@
 <div class="grid_16" style="background-color:white;">
 
-  <h2>Navigate Topic Catalog</h2>
-  
-  Topic:
-  <%= link_to '=TOP=', topics_path %>
-    <% if @topic %>
-    <% @topic.ancestors.each do |topic| %>
-      / <%= link_to topic.title, navigate_path(topic) %>
-    <% end %>
-  <% end %>
-  
   <br />
-  <br />
+
+  <h2>Topic Catalog</h2>
+
+  <%= render 'nav_bar' %>
   
   <%= render 'topic_list' %>
   

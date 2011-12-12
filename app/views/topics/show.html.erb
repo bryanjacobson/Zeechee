@@ -1,13 +1,9 @@
 <div class="grid_16">
-  Natigate Topics:
-  <%= link_to '=TOP=', topics_path %>
-  <% @topic.ancestors.each do |topic| %>
-      / <%= link_to topic.title, navigate_path(topic) %>
-  <% end %>
-  <br />
-  <br />
+  <%= render 'nav_bar' %>
 
-  <p id="notice"><%= notice %></p>
+  <% if notice %>
+    <p id="notice"><%= notice %></p>
+  <% end %>
   
   <b>Topic:</b><BR />
   

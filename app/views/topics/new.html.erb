@@ -1,12 +1,6 @@
-<div class="grid_9">
+<div class="grid_16">
 
-  Topic:
-  <%= link_to '=TOP=', topics_path %>
-  <% @topic.ancestors.each do |topic| %>
-    / <%= link_to topic.title, navigate_path(topic) %>
-  <% end %>
-  <br />
-  <br />
+  <%= render 'nav_bar' %>
 
   <h1>New topic</h1>
 

@@ -1,15 +1,9 @@
 <div class="grid_16">
-  Topic:
-  <%= link_to '=TOP=', topics_path %>
-  <% @topic.ancestors.each do |topic| %>
-      / <%= link_to topic.title, navigate_path(topic) %>
-  <% end %>
-  <br />
-  <br />
+  <%= render 'nav_bar' %>
 </div>
 <div class="clear"></div>
 
-<div class="grid_6">
+<div class="grid_5">
   <% short_title = truncate(@topic.title, :length => 18, :omission => "*") %>
   <b>Topic Hierarchy:</b><BR />
   <%= link_to '=TOP=', topics_path %>
@@ -53,7 +47,7 @@
   <% end %>
 
 </div>
-<div class="grid_10">
+<div class="grid_11">
 
   <h1>Editing topic</h1>
   
