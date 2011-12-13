@@ -10,7 +10,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111209162023) do
+ActiveRecord::Schema.define(:version => 20111213045459) do
+
+  create_table "concepts", :force => true do |t|
+    t.string   "icon"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "user_id"
+    t.integer  "topic_id"
+    t.string   "ancestry"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "concepts", ["ancestry"], :name => "index_concepts_on_ancestry"
+  add_index "concepts", ["topic_id", "ancestry"], :name => "index_concepts_on_topic_id_and_ancestry"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false

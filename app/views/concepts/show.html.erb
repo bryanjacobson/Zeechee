@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Icon:</b>
+  <%= @concept.icon %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @concept.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @concept.description %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @concept.user_id %>
+</p>
+
+<p>
+  <b>Topic:</b>
+  <%= @concept.topic_id %>
+</p>
+
+<p>
+  <b>Ancestry:</b>
+  <%= @concept.ancestry %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%= @concept.position %>
+</p>
+
+
+<%= link_to 'Edit', edit_concept_path(@concept) %> |
+<%= link_to 'Back', concepts_path %>

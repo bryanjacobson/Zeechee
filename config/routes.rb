@@ -1,4 +1,6 @@
 Learnshare::Application.routes.draw do
+  resources :concepts
+
   resources :topics
 
   resources :users
