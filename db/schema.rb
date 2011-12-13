@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111213045459) do
+ActiveRecord::Schema.define(:version => 20111213051119) do
 
   create_table "concepts", :force => true do |t|
     t.string   "icon"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20111213045459) do
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "icon_credit"
   end
 
   add_index "concepts", ["ancestry"], :name => "index_concepts_on_ancestry"
