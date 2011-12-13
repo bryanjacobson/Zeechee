@@ -5,7 +5,7 @@
     <p id="notice"><%= notice %></p>
   <% end %>
   
-  <b>Topic:</b><BR />
+  <b>Topic:</b><br />
   
   <p>
     <span title="<%= @topic.icon_credit %>">
@@ -30,18 +30,18 @@
   
   <p>
     <b>Sub Topics:</b>
-    <BR />
+    <br />
     <% @children.each do |child| %>
       <%= image_tag(default_topic_icon(child.icon), :height => '40') %>
       <%= link_to child.title, child %>
-      <BR />
+      <br />
     <% end %>
   </p>
   
   <div style="font-size:16px;padding:5px;border-style:solid;border-width:1px;font-weight:bold;background-color:Bisque;width:138px;">
   <%= link_to "Add Sub-Topic", new_topic_path(:parent_id => @topic.id), :method => :get %>
   </div>
-  <BR />
+  <br />
   <%= link_to 'Edit', edit_topic_path(@topic) %> |
   <%= link_to 'Back', topics_path %>
   
