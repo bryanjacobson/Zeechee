@@ -9,10 +9,12 @@
   
   <p>
     <span title="<%= @topic.icon_credit %>">
-      <%= image_tag(default_topic_icon(@topic.icon), :height => '60') %>
+      <%= image_tag(default_topic_icon(@topic.icon), :height => '75') %>
     </span>
     <b>Title:</b>
-    <%= @topic.title %>
+    <span class="big_text">
+      <%= @topic.title %>
+    </span>
     <span style="padding-left:90px;">
       <b>User:</b>
       <%= @topic.user.name %>
@@ -33,7 +35,9 @@
     <br />
     <% @children.each do |child| %>
       <%= image_tag(default_topic_icon(child.icon), :height => '40') %>
-      <%= link_to child.title, child %>
+      <span class="medium_text">
+        <%= link_to child.title, child %>
+      </span>
       <br />
     <% end %>
   </p>

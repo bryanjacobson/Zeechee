@@ -5,3 +5,15 @@ div.home {
   color: white;
   width: 460px;
 }
+
+span.big_text {
+  font-size: 36px;
+  line-height: 36px;
+  padding: 5px;
+}
+
+span.medium_text {
+  font-size: 28px;
+  line-height: 28px;
+  padding: 5px;
+}

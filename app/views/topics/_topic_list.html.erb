@@ -1,12 +1,12 @@
 <% if @topic %>
   <span style="padding:5px;" title="<%= @topic.description %>">
-    <%= image_tag(default_topic_icon(@topic.icon), :height => '50') %>
+    <%= image_tag(default_topic_icon(@topic.icon), :height => '75') %>
   </span>
-  <span style="padding:5px;font-size:32px;" title="<%= @topic.description %>">
-    <%= link_to @topic.title, navigate_path(@topic) %>
+  <span class="big_text" title="<%= @topic.description %>">
+    <%= @topic.title %>
   </span>
   <span style="font-size:20px;" title="<%= @topic.description %>">
-    <%= link_to 'Show', @topic %>
+    <%= link_to 'View', @topic %>
   </span>
 <% else %>
   <span style="padding:5px;font-size:32px;">
@@ -27,11 +27,11 @@
       </span>
     </td>
     <td>
-      <span style="padding:5px;font-size:32px;" title="<%= topic.description %>">
+      <span class="medium_text" title="<%= topic.description %>">
         <%= link_to topic.title, navigate_path(topic) %>
       </span>
       <span style="font-size:20px;" title="<%= topic.description %>">
-        <%= link_to 'Show', topic %>
+        <%= link_to 'View', topic %>
       </span>
     </td>
   </tr>
