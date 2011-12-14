@@ -1,4 +1,6 @@
 class ConceptsController < ApplicationController
+  before_filter :authenticate, :except => [:index, :show]
+  
   # GET /concepts
   # GET /concepts.xml
   def index
@@ -24,7 +26,9 @@ class ConceptsController < ApplicationController
   # GET /concepts/new
   # GET /concepts/new.xml
   def new
+    @topic = Topic.find(params[:topic_id])
     @concept = Concept.new
+    @concept.topic = @topic
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,6 +45,7 @@ class ConceptsController < ApplicationController
   # POST /concepts.xml
   def create
     @concept = Concept.new(params[:concept])
+    @concept.user_id = current_user.id
 
     respond_to do |format|
       if @concept.save

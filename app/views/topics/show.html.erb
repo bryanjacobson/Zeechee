@@ -29,7 +29,9 @@
     <b>Description:</b>
     <%= @topic.description %>
   </p>
-  
+</div>
+<div class="clear"></div>
+<div class="grid_8">
   <p>
     <b>Sub Topics:</b>
     <br />
@@ -43,10 +45,27 @@
   </p>
   
   <div style="font-size:16px;padding:5px;border-style:solid;border-width:1px;font-weight:bold;background-color:Bisque;width:138px;">
-  <%= link_to "Add Sub-Topic", new_topic_path(:parent_id => @topic.id), :method => :get %>
+    <%= link_to "Add Sub-Topic", new_topic_path(:parent_id => @topic.id), :method => :get %>
   </div>
   <br />
   <%= link_to 'Edit', edit_topic_path(@topic) %> |
   <%= link_to 'Back', topics_path %>
+</div>
   
+<div class="grid_8">
+  <p>
+    <b>Concepts:</b>
+    <br />
+    <% @concepts.each do |concept| %>
+      <%= image_tag(default_topic_icon(concept.icon), :height => '40') %>
+      <span class="medium_text">
+        <%= link_to concept.title, concept %>
+      </span>
+      <br />
+    <% end %>
+    <br />
+  <div style="font-size:16px;padding:5px;border-style:solid;border-width:1px;font-weight:bold;background-color:Bisque;width:138px;">
+    <%= link_to "Add Concept", new_concept_path(:topic_id => @topic.id), :method => :get %>
+  </div>
+  </p>
 </div>

@@ -23,6 +23,7 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     @parent = @topic.parent
     @children = @topic.children
+    @concepts = Concept.where("topic_id = ?", @topic.id)
 
     respond_to do |format|
       format.html # show.html.erb
