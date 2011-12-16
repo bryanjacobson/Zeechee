@@ -4,7 +4,7 @@ Navigate Topics:
   <% @topic.ancestors.each do |topic| %>
     / <%= link_to topic.title, navigate_path(topic) %>
   <% end %>
-    / <%= @topic.title %>
+    / <%= link_to_unless_current @topic.title, navigate_path(@topic) %>
 <% end %>
 <br />
 <br />

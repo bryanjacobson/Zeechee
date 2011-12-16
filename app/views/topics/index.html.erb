@@ -6,12 +6,14 @@
   
   <%= render 'topic_list' %>
   
-  <br />
-  
   <% if @topic %>
-    <%= link_to 'Add Subtopic', new_topic_path(:parent_id => @topic.id) %>
+    <div class="link_button" style="width:120px;">
+      <%= link_to 'Add Subtopic', new_topic_path(:parent_id => @topic.id) %>
+    </div>
   <% else %>
-    <%= link_to 'Add Top Level Topic', new_topic_path %>
+    <div class="link_button" style="width:186px;">
+      <%= link_to 'Add Top Level Topic', new_topic_path %>
+    </div>
   <% end %>
   
 </div>

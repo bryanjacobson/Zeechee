@@ -1,6 +1,6 @@
 
 
-<%= image_tag(default_topic_icon(@topic.icon), :height => '60') %>
+<%= image_tag(default_icon(@topic.icon), :height => '60') %>
 
 <%= form_for(@topic) do |f| %>
   <% if @topic.errors.any? %>
