@@ -4,7 +4,11 @@ Navigate Topics:
   <% @topic.ancestors.each do |topic| %>
     / <%= link_to topic.title, navigate_path(topic) %>
   <% end %>
+  <% if @topic.id %>
     / <%= link_to_unless_current @topic.title, navigate_path(@topic) %>
+  <% else %>
+   / =NEW=
+  <% end %>
 <% end %>
 <br />
 <br />
