@@ -54,17 +54,7 @@
   
 <div class="grid_8">
   <p>
-    <b>Concepts:</b>
+    <b>Contents:</b>
     <br />
-    <% @concepts.each do |concept| %>
-      <%= image_tag(default_icon(concept.icon, 'dot.png'), :height => '40') %>
-      <span class="medium_text">
-        <%= link_to concept.title, concept %>
-      </span>
-      <br />
-    <% end %>
-    <div class="link_button" style="width:116px;">
-      <%= link_to "Add Concept", new_concept_path(:topic_id => @topic.id), :method => :get %>
-    </div>
   </p>
 </div>
