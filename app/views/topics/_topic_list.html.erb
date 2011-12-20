@@ -6,7 +6,7 @@
     <%= @topic.title %>
   </span>
   <span style="font-size:20px;" title="<%= @topic.description %>">
-    <%= link_to 'View', @topic %>
+    <%= link_to 'Edit', edit_topic_path(@topic) %>
   </span>
 <% else %>
   <span style="padding:5px;font-size:32px;">
@@ -31,7 +31,7 @@
         <%= link_to topic.title, navigate_path(topic) %>
       </span>
       <span style="font-size:20px;" title="<%= topic.description %>">
-        <%= link_to 'View', topic %>
+        <%= link_to 'Edit', edit_topic_path(topic) %>
       </span>
     </td>
   </tr>

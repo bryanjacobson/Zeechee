@@ -10,7 +10,7 @@
   <br />
   <% @topic.ancestors.each do |topic| %>
     <%= image_tag(default_icon(topic.icon), :height => '40') %>
-    <%= link_to topic.title, navigate_path(topic) %>
+    <%= link_to topic.title, edit_topic_path(topic) %>
     <br />
   <% end %>
   <% if @topic.parent %>
@@ -25,11 +25,11 @@
     <% if @topic.id == topic.id %>
       <div style="background-color:Bisque;">
         <%= image_tag(default_icon(topic.icon), :height => '40') %>
-        <b><%= link_to topic.title, navigate_path(topic) %></b>
+        <b><%= link_to topic.title, edit_topic_path(topic) %></b>
       </div>
     <% else %>
       <%= image_tag(default_icon(topic.icon), :height => '40') %>
-      <%= link_to topic.title, navigate_path(topic) %>
+      <%= link_to topic.title, edit_topic_path(topic) %>
     <% end %>
     <br />
   <% end %>
