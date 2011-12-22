@@ -1,13 +1,15 @@
 <% if @topic %>
-  <span style="padding:5px;" title="<%= @topic.description %>">
+  <span style="padding:5px;" title="<%= @topic.icon_credit %>">
     <%= image_tag(default_icon(@topic.icon), :height => '75') %>
   </span>
-  <span class="big_text" title="<%= @topic.description %>">
+  <span class="big_text">
     <%= @topic.title %>
   </span>
   <span style="font-size:20px;" title="<%= @topic.description %>">
     <%= link_to 'Edit', edit_topic_path(@topic) %>
   </span>
+  <br />Description:<%= @topic.description %>
+
 <% else %>
   <span style="padding:5px;font-size:32px;">
     =TOP=
@@ -15,7 +17,7 @@
 <% end %>
 
 <hr />
-<h4>Sub-Topics:<h4>
+<h4>Subtopics:<h4>
 
 <table>
 

@@ -25,7 +25,10 @@
     <% if @topic.id == topic.id %>
       <div style="background-color:Bisque;">
         <%= image_tag(default_icon(topic.icon), :height => '40') %>
-        <b><%= link_to topic.title, edit_topic_path(topic) %></b>
+        <b><%= topic.title %></b>
+	<% if topic.has_children? %>
+          <%= link_to 'subtopics', edit_topic_path(topic.children.first) %>
+	<% end %>
       </div>
     <% else %>
       <%= image_tag(default_icon(topic.icon), :height => '40') %>
