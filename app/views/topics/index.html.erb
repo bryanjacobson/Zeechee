@@ -19,8 +19,13 @@
 
   <hr />
   <b>This level:</b><br />
-  <% @topic.siblings.each do |topic| %>
-    <% if @topic.id == topic.id %>
+  <% if @topic %>
+    <% topic_list = @topic.siblings %>
+  <% else %>
+    <% topic_list = @topics %>
+  <% end %>
+  <% topic_list.each do |topic| %>
+    <% if @topic && @topic.id == topic.id %>
       <div style="background-color:Bisque;">
         <%= image_tag(default_icon(topic.icon), :height => '40') %>
         <b><%= topic.title %></b>
@@ -34,7 +39,6 @@
     <% end %>
     <br />
   <% end %>
-
 
 </div>
 
