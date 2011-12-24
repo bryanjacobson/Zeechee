@@ -57,7 +57,7 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.save
-        format.html { redirect_to(@topic, :notice => 'Topic was successfully created.') }
+        format.html { redirect_to(navigate_path(@topic), :notice => 'Topic was successfully created.') }
         format.xml  { render :xml => @topic, :status => :created, :location => @topic }
       else
         format.html { render :action => "new" }
@@ -77,7 +77,7 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.update_attributes(params[:topic])
-        format.html { redirect_to(@topic, :notice => 'Topic was successfully updated.') }
+        format.html { redirect_to(navigate_path(@topic), :notice => 'Topic was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
