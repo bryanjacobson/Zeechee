@@ -6,9 +6,9 @@ class TopicsController < ApplicationController
   def index
     if params[:id]
       @topic =  Topic.find(params[:id])
-      @topics = @topic.children
+      @topics = @topic.children.all(:order => :title)
     else
-      @topics = Topic.roots
+      @topics = Topic.roots.all(:order => :title)
     end
 
     respond_to do |format|
