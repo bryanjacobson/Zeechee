@@ -9,6 +9,8 @@ gem 'sqlite3'
 
 gem 'ancestry'
 
+gem 'acts_as_list'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

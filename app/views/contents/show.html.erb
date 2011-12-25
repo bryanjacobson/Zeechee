@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @content.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @content.description %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @content.user_id %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%= @content.position %>
+</p>
+
+<p>
+  <b>Icon:</b>
+  <%= @content.icon %>
+</p>
+
+<p>
+  <b>Icon credit:</b>
+  <%= @content.icon_credit %>
+</p>
+
+<p>
+  <b>Topic:</b>
+  <%= @content.topic_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_content_path(@content) %> |
+<%= link_to 'Back', contents_path %>

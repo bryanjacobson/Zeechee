@@ -28,6 +28,7 @@ GEM
       activemodel (= 3.0.9)
       activesupport (= 3.0.9)
     activesupport (3.0.9)
+    acts_as_list (0.1.4)
     ancestry (1.2.4)
       activerecord (>= 2.2.2)
     arel (2.0.10)
@@ -76,6 +77,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_list
   ancestry
   rails (= 3.0.9)
   sqlite3
