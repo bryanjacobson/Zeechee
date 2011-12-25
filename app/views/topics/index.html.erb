@@ -20,7 +20,7 @@
   <hr />
   <b>This level:</b><br />
   <% if @topic %>
-    <% topic_list = @topic.siblings %>
+    <% topic_list = @topic.siblings.all(:order => :title) %>
   <% else %>
     <% topic_list = @topics %>
   <% end %>
