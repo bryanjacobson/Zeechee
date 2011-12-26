@@ -62,6 +62,10 @@
   <% end %>
   
   <hr />
+
+  <div><!-- Outer box -->
+  <div style="float:left;"><!-- Left box -->
+
   <h4>Subtopics:<h4>
   
   <table>
@@ -94,6 +98,16 @@
       <%= link_to 'Add Top Level Topic', new_topic_path %>
     </div>
   <% end %>
+  </div><!-- end left box -->
+  <div style="float:left;margin-left:20px;"><!-- right box -->
+  <% if @topic %>
+    <h4>Contents:<h4>
+    <div class="link_button" style="width:120px;">
+      <%= link_to 'Add Content', new_topic_path(:parent_id => @topic.id) %>
+    </div>
+  <% end %>
+  </div><!-- end right box -->
+  </div><!-- end outer box -->
 
 </div>
 
