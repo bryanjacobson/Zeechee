@@ -41,8 +41,49 @@
 </div>
 
 <div class="grid_12">
+
+
+  <% if @topic %>
+    <span style="padding:5px;" title="<%= @topic.icon_credit %>">
+      <%= image_tag(default_icon(@topic.icon), :height => '75') %>
+    </span>
+    <span class="big_text">
+      <%= @topic.title %>
+    </span>
+    <span style="font-size:20px;" title="<%= @topic.description %>">
+      <%= link_to 'Edit', edit_topic_path(@topic) %>
+    </span>
+    <br />Description:<%= @topic.description %>
   
-  <%= render 'topic_list' %>
+  <% else %>
+    <span style="padding:5px;font-size:32px;">
+      =TOP=
+    </span>
+  <% end %>
+  
+  <hr />
+  <h4>Subtopics:<h4>
+  
+  <table>
+  
+  <% @topics.each do |topic| %>
+    <tr>
+      <td>
+        <span style="padding:5px;" title="<%= topic.description %>">
+          <%= image_tag(default_icon(topic.icon), :height => '50') %>
+        </span>
+      </td>
+      <td>
+        <span class="medium_text" title="<%= topic.description %>">
+          <%= link_to topic.title, navigate_path(topic) %>
+        </span>
+        <span style="font-size:20px;" title="<%= topic.description %>">
+          <%= link_to 'Edit', edit_topic_path(topic) %>
+        </span>
+      </td>
+    </tr>
+  <% end %>
+  </table>
   
   <% if @topic %>
     <div class="link_button" style="width:120px;">
