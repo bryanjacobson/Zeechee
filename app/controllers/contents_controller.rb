@@ -1,4 +1,6 @@
 class ContentsController < ApplicationController
+  before_filter :authenticate, :except => [:index, :show]
+
   # GET /contents
   # GET /contents.xml
   def index
@@ -30,6 +32,11 @@ class ContentsController < ApplicationController
   # GET /contents/new.xml
   def new
     @content = Content.new
+    if params[:topic_id]
+      @topic = Topic.find(params[:topic_id]) if params[:topic_id]
+      @content.topic_id = @topic.id
+      @content.user_id = current_user.id
+    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -46,10 +53,11 @@ class ContentsController < ApplicationController
   # POST /contents.xml
   def create
     @content = Content.new(params[:content])
+    @content.user_id = current_user.id
 
     respond_to do |format|
       if @content.save
-        format.html { redirect_to(@content, :notice => 'Content was successfully created.') }
+        format.html { redirect_to(contents_path(:topic_id => @content.topic_id), :notice => 'Content was successfully created.') }
         format.xml  { render :xml => @content, :status => :created, :location => @content }
       else
         format.html { render :action => "new" }

@@ -42,6 +42,9 @@
 
 <div class="grid_12">
 
+  <% if notice %>
+    <p id="notice"><%= notice %></p>
+  <% end %>
 
   <% if @topic %>
     <span style="padding:5px;" title="<%= @topic.icon_credit %>">

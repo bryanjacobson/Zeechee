@@ -1,5 +1,11 @@
+<% if @topic %>
+  <span title="<%= @topic.description %>">
+    Topic: <%= link_to @topic.title, navigate_path(@topic) %>
+  </span>
+<% end %>
+
 <h1>New content</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', contents_path %>
+<%= link_to 'Cancel', contents_path(:topic_id => @topic.id) %>
