@@ -1,4 +1,12 @@
-<h1>Listing contents</h1>
+
+<% if @topic %>
+  <span title="<%= @topic.description %>">
+    Topic: <%= link_to @topic.title, navigate_path(@topic) %>
+  </span>
+<% end %>
+
+
+<h3>Contents</h3>
 
 <table>
   <tr>
@@ -32,4 +40,4 @@
 
 <br />
 
-<%= link_to 'New Content', new_content_path %>
+<%= link_to 'Add Content', new_content_path(:topic_id => @topic.id) %>

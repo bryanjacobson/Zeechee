@@ -2,7 +2,12 @@ class ContentsController < ApplicationController
   # GET /contents
   # GET /contents.xml
   def index
-    @contents = Content.all
+    if params[:topic_id]
+      @topic = Topic.find(params[:topic_id]) if params[:topic_id]
+      @contents = @topic.contents
+    else
+      @contents = Content.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
