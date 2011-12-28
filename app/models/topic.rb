@@ -3,5 +3,5 @@ class Topic < ActiveRecord::Base
 
   belongs_to :user
 
-  has_many :contents, :order => "position"
+  has_many :contents, :order => "position", :dependent => :destroy
 end

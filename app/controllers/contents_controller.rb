@@ -6,9 +6,14 @@ class ContentsController < ApplicationController
   def index
     if params[:topic_id]
       @topic = Topic.find(params[:topic_id]) if params[:topic_id]
+    else
+      @topic = Topic.first
+    end
+
+    if @topic 
       @contents = @topic.contents
     else
-      @contents = Content.all
+      redirect_to topics_path
     end
 
     respond_to do |format|

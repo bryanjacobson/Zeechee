@@ -1,9 +1,7 @@
 
-<% if @topic %>
-  <span title="<%= @topic.description %>">
-    Topic: <%= link_to @topic.title, navigate_path(@topic) %>
-  </span>
-<% end %>
+<span title="<%= @topic.description %>">
+  Topic: <%= link_to @topic.title, navigate_path(@topic) %>
+</span>
 
 <% if notice %>
   <p id="notice"><%= notice %></p>
@@ -15,30 +13,18 @@
 
 <table>
   <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>User</th>
     <th>Position</th>
     <th>Icon</th>
-    <th>Icon credit</th>
-    <th>Topic</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Title</th>
+    <th>Description</th>
   </tr>
 
 <% @contents.each do |content| %>
   <tr>
-    <td><%= content.title %></td>
-    <td><%= content.description %></td>
-    <td><%= content.user_id %></td>
     <td><%= content.position %></td>
-    <td><%= content.icon %></td>
-    <td><%= content.icon_credit %></td>
-    <td><%= content.topic_id %></td>
-    <td><%= link_to 'Show', content %></td>
-    <td><%= link_to 'Edit', edit_content_path(content) %></td>
-    <td><%= link_to 'Destroy', content, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= image_tag(default_icon(content.icon,'dot.png'), :height => '40', :title => content.icon_credit) %></td>
+    <td><%= link_to content.title, content %></td>
+    <td><%= content.description %></td>
   </tr>
 <% end %>
 </table>
