@@ -71,4 +71,9 @@ Learnshare::Application.routes.draw do
 
   # Topics catalog navigation
   match '/topics/index/:id' => 'topics#index', :as => 'navigate'
+
+  # Content re-ordering
+  match '/content/up/:id' => 'contents#up', :as => 'up'
+  match '/content/down/:id' => 'contents#down', :as => 'down'
+
 end

@@ -71,6 +71,20 @@ class ContentsController < ApplicationController
     end
   end
 
+  def up
+    @content = Content.find(params[:id])
+    @content.move_higher
+    @content.save
+    redirect_to(contents_path(:topic_id => @content.topic_id))
+  end
+
+  def down
+    @content = Content.find(params[:id])
+    @content.move_lower
+    @content.save
+    redirect_to(contents_path(:topic_id => @content.topic_id))
+  end
+
   # PUT /contents/1
   # PUT /contents/1.xml
   def update
