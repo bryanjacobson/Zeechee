@@ -55,7 +55,7 @@
     </span>
     <span style="font-size:20px;" title="<%= @topic.description %>">
       <%= link_to 'Edit', edit_topic_path(@topic) %>
-      <%= link_to 'Contents', contents_path(:topic_id => @topic.id) %>
+      <%= link_to 'Contents', contents_path(:topic_id => @topic.id) %>[<%= @topic.contents.count %>]
     </span>
     <br />Description:<%= @topic.description %>
   

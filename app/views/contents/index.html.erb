@@ -22,8 +22,12 @@
 <% @contents.each do |content| %>
   <tr>
     <td><%= content.position %></td>
-    <td><%= image_tag(default_icon(content.icon,'dot.png'), :height => '40', :title => content.icon_credit) %></td>
-    <td><%= link_to content.title, content %></td>
+    <td><%= image_tag(default_icon(content.icon,'dot.png'), :height => '30', :title => content.icon_credit) %></td>
+    <td>
+      <span class="medium_text">
+        <%= link_to content.title, content %>
+      </span>
+    </td>
     <td><%= content.description %></td>
   </tr>
 <% end %>
