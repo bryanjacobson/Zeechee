@@ -57,7 +57,7 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.save
-        format.html { redirect_to(navigate_path(@topic), :notice => 'Topic was successfully created.') }
+        format.html { redirect_to(navigate_path(@topic.parent_id), :notice => 'Topic was successfully created.') }
         format.xml  { render :xml => @topic, :status => :created, :location => @topic }
       else
         format.html { render :action => "new" }
