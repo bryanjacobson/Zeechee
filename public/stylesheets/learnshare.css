@@ -26,3 +26,10 @@ span.medium_text {
   line-height: 28px;
   padding: 5px;
 }
+
+span.smedium_text {
+  font-size: 20px;
+  line-height: 20px;
+  padding: 5px;
+}
+

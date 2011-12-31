@@ -53,14 +53,14 @@
     <span class="big_text">
       <%= @topic.title %>
     </span>
-    <span style="font-size:20px;" title="<%= @topic.description %>">
+    <span class="smedium_text" title="<%= @topic.description %>">
       <%= link_to 'Edit', edit_topic_path(@topic) %>
       <%= link_to 'Contents', contents_path(:topic_id => @topic.id) %>[<%= @topic.contents.count %>]
     </span>
     <br />Description:<%= @topic.description %>
   
   <% else %>
-    <span style="padding:5px;font-size:32px;">
+    <span class="big_text">
       =TOP=
     </span>
   <% end %>
@@ -82,7 +82,7 @@
         <span class="medium_text" title="<%= topic.description %>">
           <%= link_to topic.title, navigate_path(topic) %>
         </span>
-        <span style="font-size:20px;" title="<%= topic.description %>">
+        <span class="smedium_text" title="<%= topic.description %>">
           <%= link_to 'Edit', edit_topic_path(topic) %>
         </span>
       </td>
@@ -101,4 +101,3 @@
   <% end %>
 
 </div>
-
