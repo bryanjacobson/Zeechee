@@ -6,4 +6,6 @@ class HomeController < ApplicationController
     @topics = Topic.roots
   end
 
+  def tos
+  end
 end
