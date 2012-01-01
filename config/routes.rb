@@ -1,5 +1,9 @@
 Learnshare::Application.routes.draw do
 
+  resources :items
+
+  resources :item_types
+
   resources :contents
 
   resources :topics
