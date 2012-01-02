@@ -14,7 +14,6 @@
 <table>
   <tr>
     <th> </th>
-    <th>Position</th>
     <th>Icon</th>
     <th>Title</th>
     <th>Description</th>
@@ -30,7 +29,6 @@
         <%= link_to(image_tag('down.png'), down_path(content)) if content.lower_item %>
       </div>
     </td>
-    <td><%= content.position %></td>
     <td><%= image_tag(default_icon(content.icon,'dot.png'), :height => '30', :title => content.icon_credit) %></td>
     <td>
       <span class="medium_text">
