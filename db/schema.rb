@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120101010204) do
+ActiveRecord::Schema.define(:version => 20120101195138) do
 
   create_table "contents", :force => true do |t|
     t.string   "title"
@@ -25,12 +25,6 @@ ActiveRecord::Schema.define(:version => 20120101010204) do
   end
 
   add_index "contents", ["topic_id", "position"], :name => "index_contents_on_topic_id_and_position"
-
-  create_table "item_types", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "items", :force => true do |t|
     t.integer  "item_type_id"
