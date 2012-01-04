@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_filter :authenticate, :except => [:index, :show]
   # GET /items
   # GET /items.xml
   def index
@@ -41,6 +42,7 @@ class ItemsController < ApplicationController
   # POST /items.xml
   def create
     @item = Item.new(params[:item])
+    @item.user_id = current_user.id
 
     respond_to do |format|
       if @item.save

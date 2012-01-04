@@ -33,30 +33,26 @@
     </div>
   <% end %>
 
+  <%= f.hidden_field :content_id %>
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :position %>
+
   <div class="field">
-    <%= f.label :item_type_id %><br />
-    <%= f.text_field :item_type_id %>
+    <%= f.text_area :body, :rows => 2, :cols => 70 %>
   </div>
   <div class="field">
-    <%= f.label :content_id %><br />
-    <%= f.text_field :content_id %>
+    <%= f.label :type %>:
+    <%= f.select :item_type_id, @item.item_types %>
+    <%= f.label :style %>:
+    <%= f.text_field :style, :size => 58 %><br />
+    <%= f.label :note %>:
+    <%= f.text_field :note, :size => 60 %>
+    <%= f.label :size %>:
+    <%= f.text_field :size, :size => 9 %>
   </div>
   <div class="field">
-    <%= f.label :position %><br />
-    <%= f.text_field :position %>
   </div>
-  <div class="field">
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </div>
-  <div class="field">
-    <%= f.label :options %><br />
-    <%= f.text_field :options %>
-  </div>
-  <div class="field">
-    <%= f.label :size %><br />
-    <%= f.text_field :size %>
-  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
