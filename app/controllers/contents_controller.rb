@@ -26,6 +26,8 @@ class ContentsController < ApplicationController
   # GET /contents/1.xml
   def show
     @content = Content.find(params[:id])
+    @item = Item.new
+    @item.content_id = @content.id
 
     respond_to do |format|
       format.html # show.html.erb
