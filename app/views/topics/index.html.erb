@@ -31,7 +31,7 @@
   
   <hr />
 
-  <h4>Subtopics:<h4>
+  <h4>Subtopics:</h4>
   
   <table>
   
@@ -62,6 +62,39 @@
     <div class="link_button" style="width:186px;">
       <%= link_to 'Add Top Level Topic', new_topic_path %>
     </div>
+  <% end %>
+
+  <% if @screen %>
+    <br />
+    <hr />
+    <h4>Screens:</h4>
+
+    <% @topic.screens.each do |screen| %>
+      <%= link_to screen.title, screen %><br />
+    <% end %>
+
+    <%= form_for(@screen) do |f| %>
+      <% if @screen.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@screen.errors.count, "error") %> prohibited this screen from being saved:</h2>
+    
+          <ul>
+          <% @screen.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <%= f.hidden_field :user_id %>
+      <%= f.hidden_field :topic_id %>
+      <%= f.hidden_field :position %>
+    
+      <div class="actions">
+        <%= f.submit %>
+        <%= f.text_field :title, :size => 50 %>
+      </div>
+    <% end %>
   <% end %>
 
 </div>

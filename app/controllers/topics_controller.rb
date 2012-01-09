@@ -7,6 +7,9 @@ class TopicsController < ApplicationController
     if params[:id]
       @topic =  Topic.find(params[:id])
       @topics = @topic.children.all(:order => :title)
+      @screen = Screen.new
+      @screen.topic_id = @topic.id
+      @screen.user_id = current_user.id
     else
       @topics = Topic.roots.all(:order => :title)
     end

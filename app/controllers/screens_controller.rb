@@ -1,4 +1,6 @@
 class ScreensController < ApplicationController
+  before_filter :authenticate, :except => [:index, :show]
+
   # GET /screens
   # GET /screens.xml
   def index
@@ -41,12 +43,14 @@ class ScreensController < ApplicationController
   # POST /screens.xml
   def create
     @screen = Screen.new(params[:screen])
+    @screen.user_id = current_user.id
 
     respond_to do |format|
       if @screen.save
-        format.html { redirect_to(@screen, :notice => 'Screen was successfully created.') }
+        format.html { redirect_to(navigate_path(@screen.topic_id), :notice => 'Screen was successfully created.') }
         format.xml  { render :xml => @screen, :status => :created, :location => @screen }
       else
+        format.html { redirect_to(navigate_path(@screen.topic_id), :notice => 'Error in Screen creation.') }
         format.html { render :action => "new" }
         format.xml  { render :xml => @screen.errors, :status => :unprocessable_entity }
       end
