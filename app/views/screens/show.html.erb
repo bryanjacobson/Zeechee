@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @screen.title %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @screen.user_id %>
+</p>
+
+<p>
+  <b>Topic:</b>
+  <%= @screen.topic_id %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%= @screen.position %>
+</p>
+
+
+<%= link_to 'Edit', edit_screen_path(@screen) %> |
+<%= link_to 'Back', screens_path %>

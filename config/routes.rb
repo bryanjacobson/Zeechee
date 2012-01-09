@@ -1,5 +1,7 @@
 Learnshare::Application.routes.draw do
 
+  resources :screens
+
   resources :items
 
   resources :contents
