@@ -69,9 +69,25 @@
     <hr />
     <h4>Screens:</h4>
 
-    <% @topic.screens.each do |screen| %>
-      <%= link_to screen.title, screen %><br />
-    <% end %>
+    <table>
+      <% @topic.screens.each do |screen| %>
+        <tr>
+	  <td>
+            <div title="move up">
+              <%= link_to(image_tag('up.png'), up_path(screen)) if screen.position > 1 %>
+            </div>
+            <div style="float:left;" title="move down">
+              <%= link_to(image_tag('down.png'), down_path(screen)) if screen.lower_item %>
+            </div>
+	  </td>
+	  <td>
+	    <span class="medium_text">
+              <%= link_to screen.title, screen %><br />
+            </span>
+          </td>
+	</tr>
+      <% end %>
+    </table>
 
     <%= form_for(@screen) do |f| %>
       <% if @screen.errors.any? %>
