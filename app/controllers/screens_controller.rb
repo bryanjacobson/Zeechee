@@ -57,6 +57,20 @@ class ScreensController < ApplicationController
     end
   end
 
+  def up
+    @screen = Screen.find(params[:id])
+    @screen.move_higher
+    @screen.save
+    redirect_to(navigate_path(@screen.topic))
+  end
+
+  def down 
+    @screen = Screen.find(params[:id])
+    @screen.move_lower
+    @screen.save
+    redirect_to(navigate_path(@screen.topic))
+  end
+
   # PUT /screens/1
   # PUT /screens/1.xml
   def update

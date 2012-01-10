@@ -82,4 +82,8 @@ Learnshare::Application.routes.draw do
   match '/content/up/:id' => 'contents#up', :as => 'up'
   match '/content/down/:id' => 'contents#down', :as => 'down'
 
+  # Screen re-ordering
+  match '/screen/up/:id' => 'screens#up', :as => 'up_screen'
+  match '/screen/down/:id' => 'screens#down', :as => 'down_screen'
+
 end

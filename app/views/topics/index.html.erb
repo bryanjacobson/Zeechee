@@ -74,10 +74,10 @@
         <tr>
 	  <td>
             <div title="move up">
-              <%= link_to(image_tag('up.png'), up_path(screen)) if screen.position > 1 %>
+              <%= link_to(image_tag('up.png'), up_screen_path(screen)) if screen.position > 1 %>
             </div>
             <div style="float:left;" title="move down">
-              <%= link_to(image_tag('down.png'), down_path(screen)) if screen.lower_item %>
+              <%= link_to(image_tag('down.png'), down_screen_path(screen)) if screen.lower_item %>
             </div>
 	  </td>
 	  <td>
