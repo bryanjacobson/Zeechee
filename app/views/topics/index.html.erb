@@ -1,9 +1,5 @@
 <div class="grid_16" style="background-color:white;">
-  <br />
-  <span class="smedium_text">
-    <b>Explore Topics</b>
-  </span>
-  <br />
+  
   <%= render 'nav_bar' %>
 
   <% if notice %>
@@ -19,9 +15,8 @@
     </span>
     <span class="smedium_text" title="<%= @topic.description %>">
       <%= link_to 'Edit', edit_topic_path(@topic) %>
-      <%= link_to 'Contents', contents_path(:topic_id => @topic.id) %>[<%= @topic.contents.count %>]
     </span>
-    <br />Description:<%= @topic.description %>
+    Description: <%= @topic.description %>
   
   <% else %>
     <span class="big_text">

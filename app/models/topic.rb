@@ -3,6 +3,5 @@ class Topic < ActiveRecord::Base
 
   belongs_to :user
 
-  has_many :contents, :order => "position", :dependent => :destroy
   has_many :screens, :order => "position", :dependent => :destroy
 end
