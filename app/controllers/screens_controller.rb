@@ -16,6 +16,9 @@ class ScreensController < ApplicationController
   # GET /screens/1.xml
   def show
     @screen = Screen.find(params[:id])
+    @item = Item.new
+    @item.screen_id = @screen.id
+    @item.style = "color:navy;font-size:22px;line-height:22px;"
 
     respond_to do |format|
       format.html # show.html.erb

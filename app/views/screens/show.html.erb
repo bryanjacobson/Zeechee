@@ -13,5 +13,58 @@
     [<%= link_to @screen.user.name, @screen.user %>]
     <%= link_to 'Edit', edit_screen_path(@screen) %>
   </p>
+
+  <% @screen.items.each do |item| %>
+    <span
+      <% if item.style && !item.style.blank? %>
+        style="<%= item.style %>"
+      <% else %>
+        style="color:Navy;font-size:22px;"
+      <% end %>
+      <% if item.note && !item.note.blank? %>
+        title="<%= item.note %>"
+      <% end %>
+    >
+      <%= item.body %>
+    </span>
+    <span title="Edit">
+      <%= link_to 'E', edit_item_path(item) %><br />
+    </span>
+  <% end %>
+  <br />
+
+  <%= form_for(@item) do |f| %>
+    <% if @item.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+        <ul>
+        <% @item.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.hidden_field :screen_id %>
+    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :position %>
+
+    <div class="field">
+      <%= f.text_area :body, :rows => 2, :cols => 70 %><br />
+      <%= f.label :type %>:
+      <%= f.select :item_type_id, @item.item_types %>
+      <%= f.label :style %>:
+      <%= f.text_field :style, :size => 58 %><br />
+      <%= f.label :note %>:
+      <%= f.text_field :note, :size => 60 %>
+      <%= f.label :size %>:
+      <%= f.text_field :size, :size => 9 %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
   
 </div>

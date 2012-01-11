@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120108205721) do
+ActiveRecord::Schema.define(:version => 20120111040535) do
 
   create_table "contents", :force => true do |t|
     t.string   "title"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20120108205721) do
 
   create_table "items", :force => true do |t|
     t.integer  "item_type_id"
-    t.integer  "content_id"
+    t.integer  "screen_id"
     t.integer  "position"
     t.text     "body"
     t.string   "style"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20120108205721) do
     t.string   "note"
   end
 
-  add_index "items", ["content_id", "position"], :name => "index_items_on_content_id_and_position"
+  add_index "items", ["screen_id", "position"], :name => "index_items_on_content_id_and_position"
 
   create_table "screens", :force => true do |t|
     t.string   "title"

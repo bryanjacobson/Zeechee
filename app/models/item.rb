@@ -1,7 +1,7 @@
 class Item < ActiveRecord::Base
   belongs_to :uset
-  belongs_to :content
-  acts_as_list :scope => :content
+  belongs_to :screen
+  acts_as_list :scope => :screen
 
   def item_types
     [ ["Auto Detect", 1],
