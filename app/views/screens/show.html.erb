@@ -1,25 +1,17 @@
-<p id="notice"><%= notice %></p>
+<div class="grid_16">
+  <% if notice %>
+    <p id="notice"><%= notice %></p>
+  <% end %>
 
-<p>
-  <b>Title:</b>
-  <%= @screen.title %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @screen.user_id %>
-</p>
-
-<p>
-  <b>Topic:</b>
-  <%= @screen.topic_id %>
-</p>
-
-<p>
-  <b>Position:</b>
-  <%= @screen.position %>
-</p>
-
-
-<%= link_to 'Edit', edit_screen_path(@screen) %> |
-<%= link_to 'Back', screens_path %>
+  <p>
+    <b>Topic:</b>
+    <%= link_to @screen.topic.title, navigate_path(@screen.topic_id) %>
+    <br />
+    <span class="smedium_text">
+      <%= @screen.title %>
+    </span>
+    [<%= link_to @screen.user.name, @screen.user %>]
+    <%= link_to 'Edit', edit_screen_path(@screen) %>
+  </p>
+  
+</div>

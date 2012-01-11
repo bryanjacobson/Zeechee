@@ -28,6 +28,7 @@ class ContentsController < ApplicationController
     @content = Content.find(params[:id])
     @item = Item.new
     @item.content_id = @content.id
+    @item.style = "color:navy;font-size:22px;line-height:22px;"
 
     respond_to do |format|
       format.html # show.html.erb

@@ -33,7 +33,9 @@
     >
       <%= item.body %>
     </span>
-    <%= link_to "E", edit_item_path(item) %><br />
+    <span title="Edit">
+      <%= link_to 'E', edit_item_path(item) %><br />
+    </span>
   <% end %>
   <br /> 
   
