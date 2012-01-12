@@ -14,23 +14,37 @@
     <%= link_to 'Edit', edit_screen_path(@screen) %>
   </p>
 
+  <table>
   <% @screen.items.each do |item| %>
-    <span
-      <% if item.style && !item.style.blank? %>
-        style="<%= item.style %>"
-      <% else %>
-        style="color:Navy;font-size:22px;"
-      <% end %>
-      <% if item.note && !item.note.blank? %>
-        title="<%= item.note %>"
-      <% end %>
-    >
-      <%= item.body %>
-    </span>
-    <span title="Edit">
-      <%= link_to 'E', edit_item_path(item) %><br />
-    </span>
+    <tr>
+      <td>
+      <div title="move up">
+        <%= link_to(image_tag('up.png'), up_item_path(item)) if item.position > 1 %>
+      </div>
+      <div style="float:left;" title="move down">
+        <%= link_to(image_tag('down.png'), down_item_path(item)) if item.lower_item %>
+      </div>
+      </td>
+      <td>
+      <span
+        <% if item.style && !item.style.blank? %>
+          style="<%= item.style %>"
+        <% else %>
+          style="color:Navy;font-size:22px;"
+        <% end %>
+        <% if item.note && !item.note.blank? %>
+          title="<%= item.note %>"
+        <% end %>
+      >
+        <%= item.body %>
+      </span>
+      <span title="Edit">
+        <%= link_to 'E', edit_item_path(item) %><br />
+      </span>
+      </td>
+    </tr>
   <% end %>
+  </table>
   <br />
 
   <%= form_for(@item) do |f| %>

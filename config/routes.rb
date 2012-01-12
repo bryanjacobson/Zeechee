@@ -4,8 +4,6 @@ Learnshare::Application.routes.draw do
 
   resources :items
 
-  resources :contents
-
   resources :topics
 
   resources :users
@@ -78,12 +76,12 @@ Learnshare::Application.routes.draw do
   # Topics catalog navigation
   match '/topics/index/:id' => 'topics#index', :as => 'navigate'
 
-  # Content re-ordering
-  match '/content/up/:id' => 'contents#up', :as => 'up'
-  match '/content/down/:id' => 'contents#down', :as => 'down'
-
   # Screen re-ordering
   match '/screen/up/:id' => 'screens#up', :as => 'up_screen'
   match '/screen/down/:id' => 'screens#down', :as => 'down_screen'
+
+  # Item re-ordering
+  match '/item/up/:id' => 'items#up', :as => 'up_item'
+  match '/item/down/:id' => 'items#down', :as => 'down_item'
 
 end

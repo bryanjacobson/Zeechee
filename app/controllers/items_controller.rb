@@ -55,6 +55,20 @@ class ItemsController < ApplicationController
     end
   end
 
+  def up
+    @item = Item.find(params[:id])
+    @item.move_higher
+    @item.save
+    redirect_to(@item.screen)
+  end
+
+  def down
+    @item = Item.find(params[:id])
+    @item.move_lower
+    @item.save
+    redirect_to(@item.screen)
+  end
+
   # PUT /items/1
   # PUT /items/1.xml
   def update
