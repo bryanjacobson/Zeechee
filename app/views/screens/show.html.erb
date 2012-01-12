@@ -26,21 +26,39 @@
       </div>
       </td>
       <td>
-      <span
-        <% if item.style && !item.style.blank? %>
-          style="<%= item.style %>"
-        <% else %>
-          style="color:Navy;font-size:22px;"
+        <% if item.item_type_id == 3 %>
+	  <span
+            <% if item.style && !item.style.blank? %>
+              style="<%= item.style %>"
+            <% else %>
+              style="padding:5px;"
+            <% end %>
+            <% if item.note && !item.note.blank? %>
+              title="<%= item.note %>"
+            <% end %>
+          >
+	  <%= image_tag(item.body, :width => (item.size && !item.size.blank?) ? item.size : '200') %>
+	  </span>
+          <span title="Edit">
+            <%= link_to 'E', edit_item_path(item) %><br />
+          </span>
+	<% else %>
+          <span
+            <% if item.style && !item.style.blank? %>
+              style="<%= item.style %>"
+            <% else %>
+              style="color:Navy;font-size:22px;"
+            <% end %>
+            <% if item.note && !item.note.blank? %>
+              title="<%= item.note %>"
+            <% end %>
+          >
+            <%= item.body %>
+          </span>
+          <span title="Edit">
+            <%= link_to 'E', edit_item_path(item) %><br />
+          </span>
         <% end %>
-        <% if item.note && !item.note.blank? %>
-          title="<%= item.note %>"
-        <% end %>
-      >
-        <%= item.body %>
-      </span>
-      <span title="Edit">
-        <%= link_to 'E', edit_item_path(item) %><br />
-      </span>
       </td>
     </tr>
   <% end %>
