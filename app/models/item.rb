@@ -7,7 +7,9 @@ class Item < ActiveRecord::Base
   def item_types
     [ ["Auto Detect", 1],
       ["Text", 2],
-      ["Image", 3]
+      ["Image", 3],
+      ["Link", 4],
+      ["YouTube", 5]
     ]
   end
 
@@ -17,6 +19,13 @@ class Item < ActiveRecord::Base
       s = self.body.downcase
       if s =~ /\.jpg$/ || s =~ /\.jpeg$/ || s =~ /\.png$/ || s =~ /\.bmp$/ || s =~ /\.gif$/
         self.item_type_id = 3
+        return
+      end
+      if s =~ /\./ && !(s =~ / /)
+        self.item_type_id = 4
+	if s =~ /youtube\.com/i
+          self.item_type_id = 5
+	end
         return
       end
       self.item_type_id = 2

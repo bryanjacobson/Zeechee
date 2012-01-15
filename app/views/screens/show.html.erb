@@ -42,6 +42,36 @@
           <span title="Edit">
             <%= link_to 'E', edit_item_path(item) %><br />
           </span>
+	<% elsif item.item_type_id == 4 %>
+	  <span
+            <% if item.style && !item.style.blank? %>
+              style="<%= item.style %>"
+            <% else %>
+              style="padding:5px;"
+            <% end %>
+            <% if item.note && !item.note.blank? %>
+              title="<%= item.note %>"
+            <% end %>
+          >
+	  <% link = item.body %>
+	  <% if !(link =~ /^http/) %>
+	  <%   link = "http://" + link %>
+	  <% end %>
+	  <%= link_to item.body, link, :target => "_blank" %>
+	  </span>
+          <span title="Edit">
+            <%= link_to 'E', edit_item_path(item) %><br />
+          </span>
+	<% elsif item.item_type_id == 5 %>
+	  <% link = item.body %>
+	  <% if !(link =~ /^http/) %>
+	  <%   link = "http://" + link %>
+	  <% end %>
+	  <% link = link.sub("watch?v=","embed/") %>
+	  <iframe width="560" height="315" src="<%= link %>" frameborder="0" allowfullscreen></iframe>
+          <span title="Edit">
+            <%= link_to 'E', edit_item_path(item) %><br />
+          </span>
 	<% else %>
           <span
             <% if item.style && !item.style.blank? %>
