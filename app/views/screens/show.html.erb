@@ -8,10 +8,16 @@
     <%= link_to @screen.topic.title, navigate_path(@screen.topic_id) %>
     <br />
     <span class="smedium_text">
+      [ 
+      <%= link_to('< Previous', @screen.higher_item) if @screen.higher_item %>
+      |
+      <%= link_to('Next >', @screen.lower_item) if @screen.lower_item %>
+      ]
       <%= @screen.title %>
     </span>
     [<%= link_to @screen.user.name, @screen.user %>]
     <%= link_to 'Edit', edit_screen_path(@screen) %>
+
   </p>
 
   <table>
