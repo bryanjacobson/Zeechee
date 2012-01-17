@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120111045206) do
+ActiveRecord::Schema.define(:version => 20120117142021) do
 
   create_table "items", :force => true do |t|
     t.integer  "item_type_id"
@@ -57,8 +57,10 @@ ActiveRecord::Schema.define(:version => 20120111045206) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "icon_credit"
+    t.integer  "position"
   end
 
+  add_index "topics", ["ancestry", "position"], :name => "index_topics_on_ancestry_and_position"
   add_index "topics", ["ancestry"], :name => "index_topics_on_ancestry"
 
   create_table "users", :force => true do |t|

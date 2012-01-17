@@ -4,4 +4,6 @@ class Topic < ActiveRecord::Base
   belongs_to :user
 
   has_many :screens, :order => "position", :dependent => :destroy
+
+  acts_as_list :scope => "ancestry"
 end

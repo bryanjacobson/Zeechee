@@ -21,7 +21,7 @@
   <hr />
   <b>This level:</b><br />
 
-  <% @topic.siblings.all(:order => :title).each do |topic| %>
+  <% @topic.siblings.all(:order => :position).each do |topic| %>
     <% if @topic.id == topic.id %>
       <div style="background-color:Bisque;">
         <%= image_tag(default_icon(topic.icon), :height => '40') %>

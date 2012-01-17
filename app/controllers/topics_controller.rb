@@ -6,12 +6,12 @@ class TopicsController < ApplicationController
   def index
     if params[:id]
       @topic =  Topic.find(params[:id])
-      @topics = @topic.children.all(:order => :title)
+      @topics = @topic.children.all(:order => :position)
       @screen = Screen.new
       @screen.topic_id = @topic.id
       @screen.user_id = current_user.id
     else
-      @topics = Topic.roots.all(:order => :title)
+      @topics = Topic.roots.all(:order => :position)
     end
 
     respond_to do |format|
@@ -60,7 +60,13 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.save
-        format.html { redirect_to(navigate_path(@topic.parent_id), :notice => 'Topic was successfully created.') }
+        format.html { 
+	  if @topic.parent_id
+	    redirect_to(navigate_path(@topic.parent_id), :notice => 'Topic was successfully created.') 
+          else
+	    redirect_to(topics_url, :notice => 'Topic was successfully created.') 
+          end
+	}
         format.xml  { render :xml => @topic, :status => :created, :location => @topic }
       else
         format.html { render :action => "new" }
