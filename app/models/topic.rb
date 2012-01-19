@@ -10,4 +10,12 @@ class Topic < ActiveRecord::Base
   def scope_condition
     ancestry ? "ancestry = '#{ancestry}'" : 'ancestry IS NULL'
   end
+
+  # Needed to update list position when moving to different ancestry
+  def parent=(parent)
+    p = position
+    remove_from_list if (p && valid?)
+    super
+    add_to_list_bottom if (p && valid?)
+  end
 end
