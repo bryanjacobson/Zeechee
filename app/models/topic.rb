@@ -12,10 +12,14 @@ class Topic < ActiveRecord::Base
   end
 
   # Needed to update list position when moving to different ancestry
-  def parent=(parent)
-    p = position
-    remove_from_list if (p && valid?)
-    super
-    add_to_list_bottom if (p && valid?)
+  def parent=(new_parent)
+    if parent != new_parent
+      p = position
+      remove_from_list if (p && valid?)
+      super
+      add_to_list_bottom if (p && valid?)
+    else
+      super
+    end
   end
 end
