@@ -9,7 +9,6 @@ class TopicsController < ApplicationController
       @topics = @topic.children.all(:order => :position)
       @screen = Screen.new
       @screen.topic_id = @topic.id
-      @screen.user_id = current_user.id
     else
       @topics = Topic.roots.all(:order => :position)
     end
