@@ -22,6 +22,7 @@
 <%= link_to_unless_current 'Zeechee', root_path %> |
 <%= link_to_unless_current 'Topics', topics_path %> |
 <%= link_to_unless_current 'Users', users_path %> |
+<%= link_to 'Feedback', "http://groups.google.com/group/zeechee", :target => "_blank" %> |
 
 <% if logged_in? %>
   Welcome <%= current_user.name %> |
