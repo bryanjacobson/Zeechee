@@ -1,0 +1,5 @@
+<% if @link %>
+  <%= link_to @link.title, navigate_path(@link) %>,
+<% else %>
+  <%= @link_name %>
+<% end %>

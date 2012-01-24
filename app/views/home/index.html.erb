@@ -2,15 +2,12 @@
   <div class="grid_9">
 
 <div class="home" style="color:navy;">
-<em>Welcome to <b>LearnShare</b></em>
-</div>
-
-<div class="home" style="background-color:Lime;" OnClick="document.location='/topics'">
-<b>Learn</b> things that matter
+<em>Welcome to <b>Zeechee</b></em>
 </div>
 
 <div class="home" style="background-color:Teal;" OnClick="document.location='/topics'">
-<b>Share</b> what <em>you</em> know
+<b>Zeechee</b> is a community where we help each other learn
+valuable skills.
 </div>
 
 
@@ -42,10 +39,29 @@
 <% if logged_in? %>
 
 <div class="home" style="width:326px;background-color:Coral;" OnClick="document.location='/topics'">
-<b>LearnShare</b> is a place to learn new things and share what you know.
-<br />
-<br />
-Knowledge is organized in a catalog of topics.
+
+Recent additions include
+
+<% @link_name = "Time Management For Life" %>
+<% @link = Topic.find(:first, :conditions => ['id = ?', 38]) %>
+<%= render 'recent_link' %>
+
+<% @link_name = "Teach Yourself To Knit" %>
+<% @link = Topic.find(:first, :conditions => ['id = ?', 100]) %>
+<%= render 'recent_link' %>
+
+<% @link_name = "Javascript" %>
+<% @link = Topic.find(:first, :conditions => ['id = ?', 6]) %>
+<%= render 'recent_link' %>
+
+<% @link_name = "Find A Great Job" %>
+<% @link = Topic.find(:first, :conditions => ['id = ?', 2]) %>
+<%= render 'recent_link' %>
+
+<% @link_name = "Meditation" %>
+<% @link = Topic.find(:first, :conditions => ['id = ?', 27]) %>
+<%= render 'recent_link' %>
+and more.
 </div>
 
 <% else %>
