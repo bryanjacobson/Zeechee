@@ -27,7 +27,9 @@
   
   <hr />
 
+  <% if !@topics.empty? %>
   <h4>Subtopics:</h4>
+  <% end %>
   
   <table>
   
@@ -64,7 +66,9 @@
   <% if @screen %>
     <br />
     <hr />
-    <h4>Screens:</h4>
+    <% if !@topic.screens.empty? %>
+    <h2 style="color:blue;">Start Learning:</h2>
+    <% end %>
 
     <table>
       <% @topic.screens.each do |screen| %>
