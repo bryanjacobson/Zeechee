@@ -15,7 +15,6 @@
     </span>
     <span class="smedium_text" title="<%= @topic.description %>">
       <%= link_to 'Edit', edit_topic_path(@topic) %>
-      (<%= @topic.position %>)
     </span>
     Description: <%= @topic.description %>
   
@@ -62,7 +61,6 @@
         </span>
         <span class="smedium_text" title="<%= topic.description %>">
           <%= link_to 'Edit', edit_topic_path(topic) %>
-	  (<%= topic.position %>)
         </span>
       </td>
     </tr>
