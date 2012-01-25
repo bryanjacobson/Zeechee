@@ -76,6 +76,10 @@ Learnshare::Application.routes.draw do
   # Topics catalog navigation
   match '/topics/index/:id' => 'topics#index', :as => 'navigate'
 
+  # Topic re-ordering
+  match '/topic/up/:id' => 'topics#up', :as => 'up_topic'
+  match '/topic/down/:id' => 'topics#down', :as => 'down_topic'
+
   # Screen re-ordering
   match '/screen/up/:id' => 'screens#up', :as => 'up_screen'
   match '/screen/down/:id' => 'screens#down', :as => 'down_screen'

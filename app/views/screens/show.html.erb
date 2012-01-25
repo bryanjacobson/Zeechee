@@ -25,10 +25,18 @@
     <tr>
       <td>
       <div title="move up">
-        <%= link_to(image_tag('up.png'), up_item_path(item)) if item.position > 1 %>
+        <% if item.position > 1 %>
+          <%= link_to(image_tag('up.png'), up_item_path(item)) %>
+	<% else %>
+          <%= image_tag('up_gray.png') %>
+	<% end %>
       </div>
       <div style="float:left;" title="move down">
-        <%= link_to(image_tag('down.png'), down_item_path(item)) if item.lower_item %>
+        <% if item.lower_item %>
+          <%= link_to(image_tag('down.png'), down_item_path(item)) %>
+        <% else %>
+	  <%= image_tag('down_gray.png') %>
+	<% end %>
       </div>
       </td>
       <td>
