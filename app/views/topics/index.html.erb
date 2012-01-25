@@ -36,6 +36,22 @@
   <% @topics.each do |topic| %>
     <tr>
       <td>
+        <div title="move up">
+          <% if topic.position && topic.position > 1 %>
+            <%= link_to(image_tag('up.png'), up_topic_path(topic)) %>
+          <% else %>
+            <%= image_tag('up_gray.png') %>
+          <% end %>
+        </div>
+        <div style="float:left;" title="move down">
+          <% if topic.lower_item %>
+            <%= link_to(image_tag('down.png'), down_topic_path(topic)) %>
+          <% else %>
+            <%= image_tag('down_gray.png') %>
+          <% end %>
+        </div>
+      </td>
+      <td>
         <span style="padding:5px;" title="<%= topic.description %>">
           <%= image_tag(default_icon(topic.icon), :height => '50') %>
         </span>

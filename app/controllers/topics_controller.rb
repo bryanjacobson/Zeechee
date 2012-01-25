@@ -74,6 +74,20 @@ class TopicsController < ApplicationController
     end
   end
 
+  def up
+    @topic = Topic.find(params[:id])
+    @topic.move_higher
+    @topic.save
+    redirect_to(navigate_path(@topic.parent))
+  end
+
+  def down
+    @topic = Topic.find(params[:id])
+    @topic.move_lower
+    @topic.save
+    redirect_to(navigate_path(@topic.parent))
+  end
+
   # PUT /topics/1
   # PUT /topics/1.xml
   def update
