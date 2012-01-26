@@ -12,6 +12,7 @@
       <%= link_to('< Previous', @screen.higher_item) if @screen.higher_item %>
       |
       <%= link_to('Next >', @screen.lower_item) if @screen.lower_item %>
+      (next_screen: <%= @screen.next_screen %>)
       ]
       <%= @screen.title %>
     </span>

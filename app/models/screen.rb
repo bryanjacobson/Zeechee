@@ -4,4 +4,9 @@ class Screen < ActiveRecord::Base
   has_many :items, :order => "position", :dependent => :destroy
   acts_as_list :scope => :topic
   validates_size_of :title, :within => 1..280
+
+  def next_screen
+    return lower_item if lower_item
+    topic.next_screen
+  end
 end

@@ -22,4 +22,22 @@ class Topic < ActiveRecord::Base
       super
     end
   end
+
+  def first_screen
+    return screens.first if !screens.empty?
+    next_screen
+  end
+
+  def next_screen
+    return children.first.first_screen if has_children?
+    sibling_screen
+  end
+
+  def sibling_screen
+    if !siblings || self == sibling.last
+      return nil if is_root? 
+      return parent.sibling_screen
+    end
+    nil # Not done - need to find next sibling
+  end
 end
