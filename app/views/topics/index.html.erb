@@ -80,8 +80,10 @@
   <% if @screen %>
     <br />
     <hr />
-    <% if !@topic.screens.empty? %>
-    <h2 style="color:blue;">Start Learning:</h2>
+    <% if @topic.screens.empty? %>
+    <h4 style="color:blue;">No content (yet). Create screens to capture and share what you learn:</h4>
+    <% else %>
+    <h2 style="color:blue;">Click on the First Screen to Start Learning:</h2>
     <% end %>
 
     <table>

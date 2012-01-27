@@ -9,4 +9,9 @@ class Screen < ActiveRecord::Base
     return lower_item if lower_item
     topic.next_screen
   end
+
+  def previous_screen
+    return higher_item if higher_item
+    topic.previous_screen
+  end
 end
