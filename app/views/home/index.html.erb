@@ -15,6 +15,12 @@ Welcome to <b>Zeechee</b>, a community where we help each other learn
 <b>Explore</b> <em><%= Topic.all.count %></em> topics
 </div>
 
+<div class="home" OnClick="document.location='/topics'" style="font-size:28px;line-height:30px;background-color:Navy;">
+<em>Zeechee is in development and is "pre-beta". Your early feedback is
+valuable and can be made at
+<%= link_to 'Feedback', "http://groups.google.com/group/zeechee", :target => "_blank" %>. Thank you!</em>
+</div>
+
 <%= link_to "Terms of Service", home_tos_path %>
 
 
