@@ -5,10 +5,12 @@
   <div class="clear"></div>
   <div class="grid_14">
   </div>
-  <%= @user.name %> |
-  <%= @user.email %> |
-<%= link_to 'Edit', edit_user_path(@user) %> ||
-<%= link_to 'Users', users_path %>
+  User: <%= @user.name %>
+  <% if @user == current_user %> 
+    | <%= @user.email %>
+    | <%= link_to 'Edit', edit_user_path(@user) %>
+  <% end %>
+  | <%= link_to 'Users', users_path %>
   <div class="clear"></div>
 
   <div class="grid_14">

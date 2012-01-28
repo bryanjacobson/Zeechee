@@ -87,7 +87,8 @@
             <%= link_to 'E', edit_item_path(item) %><br />
           </span>
 	<% else %>
-          <span
+	  <!-- Used for item_type_id==1 Text, and all others  -->
+          <div
             <% if item.style && !item.style.blank? %>
               style="<%= item.style %>"
             <% else %>
@@ -98,10 +99,10 @@
             <% end %>
           >
             <%= item.body %>
-          </span>
-          <span title="Edit">
+          </div>
+          <div title="Edit" style="float:right;">
             <%= link_to 'E', edit_item_path(item) %><br />
-          </span>
+          </div>
         <% end %>
       </td>
     </tr>

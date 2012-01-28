@@ -26,6 +26,9 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    if current_user != @user
+      redirect_to(@user, :notice => 'You can only edit your own user profile.')
+    end
   end
 
   # POST /users
@@ -52,6 +55,10 @@ class UsersController < ApplicationController
   # PUT /users/1.xml
   def update
     @user = User.find(params[:id])
+    if current_user != @user
+      redirect_to(@user, :notice => 'You can only edit your own user profile.')
+      return
+    end
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
