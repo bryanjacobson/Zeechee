@@ -38,6 +38,9 @@
 	  <%= image_tag('down_gray.png') %>
 	<% end %>
       </div>
+          <div title="Edit" style="float:right;padding-right:10px;">
+            <%= link_to 'E', edit_item_path(item) %><br />
+          </div>
       </td>
       <td>
         <% if item.item_type_id == 3 %>
@@ -53,9 +56,6 @@
           >
 	  <%= image_tag(item.body, :width => (item.size && !item.size.blank?) ? item.size : '200') %>
 	  </span>
-          <span title="Edit">
-            <%= link_to 'E', edit_item_path(item) %><br />
-          </span>
 	<% elsif item.item_type_id == 4 %>
 	  <span
             <% if item.style && !item.style.blank? %>
@@ -73,9 +73,6 @@
 	  <% end %>
 	  <%= link_to item.body, link, :target => "_blank" %>
 	  </span>
-          <span title="Edit">
-            <%= link_to 'E', edit_item_path(item) %><br />
-          </span>
 	<% elsif item.item_type_id == 5 %>
 	  <% link = item.body %>
 	  <% if !(link =~ /^http/) %>
@@ -83,9 +80,6 @@
 	  <% end %>
 	  <% link = link.sub("watch?v=","embed/") %>
 	  <iframe width="560" height="315" src="<%= link %>" frameborder="0" allowfullscreen></iframe>
-          <span title="Edit">
-            <%= link_to 'E', edit_item_path(item) %><br />
-          </span>
 	<% else %>
 	  <!-- Used for item_type_id==1 Text, and all others  -->
           <div
@@ -99,9 +93,6 @@
             <% end %>
           >
             <%= item.body %>
-          </div>
-          <div title="Edit" style="float:right;">
-            <%= link_to 'E', edit_item_path(item) %><br />
           </div>
         <% end %>
       </td>
