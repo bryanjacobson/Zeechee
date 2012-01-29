@@ -1,0 +1,2 @@
+heroku pgbackups:capture --expire
+heroku pgbackups
