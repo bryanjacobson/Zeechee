@@ -76,16 +76,21 @@ class ScreensController < ApplicationController
 
   def clone
     @screen = Screen.find(params[:id])
-    clone = @screen.clone
-    clone.title = 'Cloned ' + clone.title
-    clone.id = nil
-    clone.position = nil
-    clone.insert_at(@screen.position + 1) 
+    clone = Screen.new
+    clone.title = 'Cloned ' + @screen.title
+    clone.user = current_user
+    clone.topic = @screen.topic
     clone.save
+    clone.insert_at(@screen.position + 1) 
     @screen.items.each do |item|
-      clone_item = item.clone
-      clone_item.id = nil
+      clone_item = Item.new
+      clone_item.item_type_id = item.item_type_id
       clone_item.screen_id = clone.id
+      clone_item.position = item.position
+      clone_item.body = item.body
+      clone_item.style = item.style
+      clone_item.size = item.size
+      clone_item.note = item.note
       clone_item.user_id = current_user.id
       clone_item.save
     end
