@@ -16,7 +16,8 @@
       <%= @screen.title %>
     </span>
     [<%= link_to @screen.user.name, @screen.user %>]
-    <%= link_to 'Edit', edit_screen_path(@screen) %>
+    <%= link_to 'Edit', edit_screen_path(@screen) %> |
+    <%= link_to 'Clone', clone_screen_path(@screen), :confirm => 'Clone screen and all contents?' %>
 
   </p>
 

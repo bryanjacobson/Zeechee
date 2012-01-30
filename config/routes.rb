@@ -84,6 +84,9 @@ Learnshare::Application.routes.draw do
   match '/screen/up/:id' => 'screens#up', :as => 'up_screen'
   match '/screen/down/:id' => 'screens#down', :as => 'down_screen'
 
+  # Screen cloning
+  match '/screen/clone/:id' => 'screens#clone', :as => 'clone_screen'
+
   # Item re-ordering
   match '/item/up/:id' => 'items#up', :as => 'up_item'
   match '/item/down/:id' => 'items#down', :as => 'down_item'

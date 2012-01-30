@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @screen %> |
-<%= link_to 'Back', screens_path %>
+<%= link_to 'Cancel', @screen %> |
+<%= link_to 'Destroy', @screen, :confirm => 'Are you sure?', :method => :delete %>

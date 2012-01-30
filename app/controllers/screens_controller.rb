@@ -74,6 +74,24 @@ class ScreensController < ApplicationController
     redirect_to(navigate_path(@screen.topic))
   end
 
+  def clone
+    @screen = Screen.find(params[:id])
+    clone = @screen.clone
+    clone.title = 'Cloned ' + clone.title
+    clone.id = nil
+    clone.position = nil
+    clone.insert_at(@screen.position + 1) 
+    clone.save
+    @screen.items.each do |item|
+      clone_item = item.clone
+      clone_item.id = nil
+      clone_item.screen_id = clone.id
+      clone_item.user_id = current_user.id
+      clone_item.save
+    end
+    redirect_to(clone, :notice => 'Screen was successfully cloned.')
+  end
+
   # PUT /screens/1
   # PUT /screens/1.xml
   def update
@@ -94,10 +112,11 @@ class ScreensController < ApplicationController
   # DELETE /screens/1.xml
   def destroy
     @screen = Screen.find(params[:id])
+    @topic = @screen.topic
     @screen.destroy
 
     respond_to do |format|
-      format.html { redirect_to(screens_url) }
+      format.html { redirect_to(navigate_path(@topic)) }
       format.xml  { head :ok }
     end
   end
