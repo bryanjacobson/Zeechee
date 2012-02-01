@@ -16,7 +16,11 @@
   <%= f.hidden_field :position %>
 
   <div class="field">
-    <%= f.text_area :body, :rows => 2, :cols => 70 %><br />
+    <% if @body_rows %>
+      <%= f.text_area :body, :rows => @body_rows, :cols => 70 %><br />
+    <% else %>
+      <%= f.text_area :body, :rows => 2, :cols => 70 %><br />
+    <% end %>
     <%= f.label :type %>:
     <%= f.select :item_type_id, @item.item_types %>
     <%= f.label :style %>:
