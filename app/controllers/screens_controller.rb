@@ -30,6 +30,7 @@ class ScreensController < ApplicationController
   # GET /screens/new.xml
   def new
     @screen = Screen.new
+    @screen.topic_id = params[:topic_id]
 
     respond_to do |format|
       format.html # new.html.erb
