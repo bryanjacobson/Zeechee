@@ -1,3 +1,4 @@
+# Copyright 2012 Bryan Lee Jacobson
 class RenamePasswordToHashedPassword < ActiveRecord::Migration
   def self.up
     rename_column :users, :password, :hashed_password

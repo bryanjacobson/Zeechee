@@ -1,3 +1,4 @@
+# Copyright 2012 Bryan Lee Jacobson
 class RemoveItemType < ActiveRecord::Migration
   def self.up
       drop_table :item_types

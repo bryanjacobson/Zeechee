@@ -1,3 +1,4 @@
+# Copyright 2012 Bryan Lee Jacobson
 class AddIconCreditToConcepts < ActiveRecord::Migration
   def self.up
     add_column :concepts, :icon_credit, :string

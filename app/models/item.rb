@@ -1,3 +1,4 @@
+# Copyright 2012 Bryan Lee Jacobson
 class Item < ActiveRecord::Base
   belongs_to :uset
   belongs_to :screen

@@ -1,3 +1,4 @@
+# Copyright 2012 Bryan Lee Jacobson
 require 'digest'
 
 class User < ActiveRecord::Base

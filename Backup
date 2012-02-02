@@ -1,2 +1,3 @@
+# Copyright 2012 - Bryan Lee Jacobson
 heroku pgbackups:capture --expire
 heroku pgbackups

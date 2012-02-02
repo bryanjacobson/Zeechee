@@ -1,3 +1,4 @@
+# Copyright 2012 Bryan Lee Jacobson
 class AddUserIdAndNoteToItems < ActiveRecord::Migration
   def self.up
     add_column :items, :note, :string

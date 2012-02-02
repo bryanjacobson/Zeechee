@@ -1,3 +1,4 @@
+# Copyright 2012 Bryan Lee Jacobson
 class CreateConcepts < ActiveRecord::Migration
   def self.up
     create_table :concepts do |t|

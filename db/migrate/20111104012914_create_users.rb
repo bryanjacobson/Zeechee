@@ -1,3 +1,4 @@
+# Copyright 2012 Bryan Lee Jacobson
 class CreateUsers < ActiveRecord::Migration
   def self.up
     create_table :users do |t|

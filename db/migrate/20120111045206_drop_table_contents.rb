@@ -1,3 +1,4 @@
+# Copyright 2012 Bryan Lee Jacobson
 class DropTableContents < ActiveRecord::Migration
   def self.up
     remove_index :contents, [:topic_id, :position]

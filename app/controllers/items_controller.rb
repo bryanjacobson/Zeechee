@@ -1,3 +1,4 @@
+# Copyright 2012 Bryan Lee Jacobson
 class ItemsController < ApplicationController
   before_filter :authenticate, :except => [:index, :show]
   # GET /items

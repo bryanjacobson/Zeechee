@@ -1,3 +1,4 @@
+# Copyright 2012 Bryan Lee Jacobson
 class AddPositionToTopics < ActiveRecord::Migration
   def self.up
     add_column :topics, :position, :integer

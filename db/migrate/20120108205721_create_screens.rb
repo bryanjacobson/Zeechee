@@ -1,3 +1,4 @@
+# Copyright 2012 Bryan Lee Jacobson
 class CreateScreens < ActiveRecord::Migration
   def self.up
     create_table :screens do |t|

@@ -1,3 +1,4 @@
+# Copyright 2012 Bryan Lee Jacobson
 class AddSessionsTable < ActiveRecord::Migration
   def self.up
     create_table :sessions do |t|

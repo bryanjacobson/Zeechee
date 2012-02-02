@@ -1,3 +1,4 @@
+# Copyright 2012 Bryan Lee Jacobson
 class UsersController < ApplicationController
   before_filter :authenticate, :except => [:index, :show, :create]
 

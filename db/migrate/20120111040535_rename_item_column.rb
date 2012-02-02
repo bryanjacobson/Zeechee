@@ -1,3 +1,4 @@
+# Copyright 2012 Bryan Lee Jacobson
 class RenameItemColumn < ActiveRecord::Migration
   def self.up
     rename_column :items, :content_id, :screen_id

@@ -1,3 +1,4 @@
+# Copyright 2012 Bryan Lee Jacobson
 class ApplicationController < ActionController::Base
   protect_from_forgery
 

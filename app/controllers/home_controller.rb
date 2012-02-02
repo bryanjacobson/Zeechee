@@ -1,3 +1,4 @@
+# Copyright 2012 Bryan Lee Jacobson
 class HomeController < ApplicationController
   def index
     # Create a "new" user object for registration form

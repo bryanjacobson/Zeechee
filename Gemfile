@@ -1,3 +1,4 @@
+# Copyright 2012 Bryan Lee Jacobson
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.9'

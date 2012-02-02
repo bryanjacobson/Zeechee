@@ -1,3 +1,4 @@
+# Copyright 2012 Bryan Lee Jacobson
 module ApplicationHelper
   def default_icon(path, default_path='t.jpg')
     return path if !path.blank?

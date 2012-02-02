@@ -1,3 +1,4 @@
+# Copyright 2012 Bryan Lee Jacobson
 class Screen < ActiveRecord::Base
   belongs_to :user
   belongs_to :topic

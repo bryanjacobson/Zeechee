@@ -1,3 +1,4 @@
+# Copyright 2012 Bryan Lee Jacobson
 Learnshare::Application.routes.draw do
 
   resources :screens

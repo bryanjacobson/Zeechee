@@ -1,3 +1,4 @@
+# Copyright 2012 Bryan Lee Jacobson
 class SessionsController < ApplicationController
   def create
     if user = User.authenticate(params[:email], params[:password])

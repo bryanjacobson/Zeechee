@@ -1,3 +1,4 @@
+# Copyright 2012 Bryan Lee Jacobson
 class CreateItemTypes < ActiveRecord::Migration
   def self.up
     create_table :item_types do |t|
