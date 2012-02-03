@@ -1,6 +1,6 @@
 # Copyright 2012 Bryan Lee Jacobson
 class Item < ActiveRecord::Base
-  belongs_to :uset
+  belongs_to :user
   belongs_to :screen
   acts_as_list :scope => :screen
   before_save :auto_detect
@@ -12,6 +12,12 @@ class Item < ActiveRecord::Base
       ["Link", 4],
       ["YouTube", 5]
     ]
+  end
+
+  def authorized?(current_user)
+    return true if current_user == user
+    return true if current_user == screen.user
+    return false
   end
 
   private

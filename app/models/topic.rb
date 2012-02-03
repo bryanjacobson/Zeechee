@@ -24,6 +24,12 @@ class Topic < ActiveRecord::Base
     end
   end
 
+  def authorized?(current_user)
+    return true if current_user == user
+    return true if !is_root? && current_user == parent.user
+    return false
+  end
+
   # When traversing screens first, my screens
   def first_screen
     # print "frst: " + id.to_s + " - " + title + "\n"

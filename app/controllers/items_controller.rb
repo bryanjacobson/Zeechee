@@ -37,6 +37,11 @@ class ItemsController < ApplicationController
   # GET /items/1/edit
   def edit
     @item = Item.find(params[:id])
+    if !@item.authorized?(current_user)
+      redirect_to(@item.screen, :notice =>
+        'Permission denied: You can only update your own Items.')
+      return
+    end
     @body_rows = 6
   end
 
@@ -75,6 +80,11 @@ class ItemsController < ApplicationController
   # PUT /items/1.xml
   def update
     @item = Item.find(params[:id])
+    if !@item.authorized?(current_user)
+      redirect_to(@item.screen, :notice =>
+        'Permission denied: You can only update your own Items.')
+      return
+    end
 
     respond_to do |format|
       if @item.update_attributes(params[:item])
@@ -91,6 +101,11 @@ class ItemsController < ApplicationController
   # DELETE /items/1.xml
   def destroy
     @item = Item.find(params[:id])
+    if !@item.authorized?(current_user)
+      redirect_to(@item.screen, :notice =>
+        'Permission denied: You can only delete your own Items.')
+      return
+    end
     @screen = @item.screen
     @item.destroy
 

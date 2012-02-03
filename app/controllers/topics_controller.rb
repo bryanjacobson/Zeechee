@@ -50,6 +50,11 @@ class TopicsController < ApplicationController
   # GET /topics/1/edit
   def edit
     @topic = Topic.find(params[:id])
+    if !@topic.authorized?(current_user)
+      redirect_to(navigate_path(@topic),
+        :notice => 'Permission denied: You can only edit your own Topics.')
+      return 
+    end
   end
 
   # POST /topics
@@ -93,6 +98,11 @@ class TopicsController < ApplicationController
   # PUT /topics/1.xml
   def update
     @topic = Topic.find(params[:id])
+    if !@topic.authorized?(current_user)
+      redirect_to(navigate_path(@topic),
+        :notice => 'Permission denied: You can only update your own Topics.')
+      return 
+    end
     @up = params[:up]
     if @up == "1"
       @topic.parent = @topic.parent.parent
@@ -113,6 +123,11 @@ class TopicsController < ApplicationController
   # DELETE /topics/1.xml
   def destroy
     @topic = Topic.find(params[:id])
+    if !@topic.authorized?(current_user)
+      redirect_to(navigate_path(@topic),
+        :notice => 'Permission denied: You can only delete your own Topics.')
+      return 
+    end
     @topic.destroy
 
     respond_to do |format|

@@ -42,6 +42,11 @@ class ScreensController < ApplicationController
   # GET /screens/1/edit
   def edit
     @screen = Screen.find(params[:id])
+    if !@screen.authorized?(current_user)
+      redirect_to(@screen,
+        :notice => 'Permission denied: You can only edit your own Screens.')
+      return    
+    end
   end
 
   # POST /screens
@@ -103,6 +108,11 @@ class ScreensController < ApplicationController
   # PUT /screens/1.xml
   def update
     @screen = Screen.find(params[:id])
+    if !@screen.authorized?(current_user)
+      redirect_to(@screen,
+        :notice => 'Permission denied: You can only update your own Screens.')
+      return    
+    end
 
     respond_to do |format|
       if @screen.update_attributes(params[:screen])
@@ -119,6 +129,11 @@ class ScreensController < ApplicationController
   # DELETE /screens/1.xml
   def destroy
     @screen = Screen.find(params[:id])
+    if !@screen.authorized?(current_user)
+      redirect_to(@screen,
+        :notice => 'Permission denied: You can only delete your own Screens.')
+      return    
+    end
     @topic = @screen.topic
     @screen.destroy
 

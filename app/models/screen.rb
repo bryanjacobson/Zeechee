@@ -6,6 +6,12 @@ class Screen < ActiveRecord::Base
   acts_as_list :scope => :topic
   validates_size_of :title, :within => 1..280
 
+  def authorized?(current_user)
+    return true if current_user == user
+    return true if current_user == topic.user
+    return false
+  end
+
   def next_screen
     return lower_item if lower_item
     topic.next_screen
