@@ -1,2 +1,5 @@
 # Copyright 2012 Bryan Lee Jacobson
+git checkout master
+git merge working
+git checkout working
 git push -u origin master
