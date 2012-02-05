@@ -74,10 +74,16 @@ class CommentsController < ApplicationController
   # DELETE /comments/1.xml
   def destroy
     @comment = Comment.find(params[:id])
-    @comment.destroy
+    @commentable = @comment.commentable
+    if current_user == @comment.user
+      @comment.destroy
+      notice = 'Comment deleted.'
+    else
+      notice = 'You can only delete your own comments.'
+    end
 
     respond_to do |format|
-      format.html { redirect_to(comments_url) }
+      format.html { redirect_to(@commentable, :notice => notice) }
       format.xml  { head :ok }
     end
   end
