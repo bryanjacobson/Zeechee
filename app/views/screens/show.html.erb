@@ -9,11 +9,7 @@
     <%= link_to @screen.topic.title, navigate_path(@screen.topic_id) %>
     <br />
     <span class="smedium_text">
-      [ 
-      <%= link_to('< Previous', @screen.previous_screen) if @screen.previous_screen %>
-      |
-      <%= link_to('Next >', @screen.next_screen) if @screen.next_screen %>
-      ]
+      <%= link_to('Previous Screen', @screen.previous_screen) if @screen.previous_screen %>
       <%= @screen.title %>
     </span>
     [<%= link_to @screen.user.name, @screen.user %>]
@@ -142,6 +138,7 @@
   
 </div>
 <div class="grid_4">
+  <%= render 'fancy_button', :link => @screen.next_screen, :text => 'Next Screen' %>
   <b>Comments:</b><br />
 
   <%= form_for(@comment) do |f| %>
@@ -180,4 +177,5 @@
     <br /></span>
   <% end %>
   
+  <%= render 'fancy_button', :link => @screen.next_screen, :text => 'Next Screen' %>
 </div>

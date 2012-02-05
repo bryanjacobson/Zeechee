@@ -33,3 +33,11 @@ span.smedium_text {
   padding: 5px;
 }
 
+div.fancy_button {
+  border-style: inset;
+  border-color: blue;
+  border-width: 12px;
+  font-size: 24px;
+  font-weight: bold;
+  padding:5px;
+}
