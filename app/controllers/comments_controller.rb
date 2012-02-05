@@ -45,13 +45,8 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        if @comment.commentable_type == 'Screen'
-          redirect_to(screen_url(@comment.commentable_id), :notice => 'Comment was successfully created.') 
-        else
-          redirect_to(@comment, :notice => 'Comment was successfully created.')
-	end
-        # format.html { redirect_to(@comment, :notice => 'Comment was successfully created.') }
-        # format.xml  { render :xml => @comment, :status => :created, :location => @comment }
+        format.html { redirect_to(@comment.commentable, :notice => 'Comment was successfully created.') }
+        format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
