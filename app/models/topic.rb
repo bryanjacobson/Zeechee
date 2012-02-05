@@ -6,6 +6,8 @@ class Topic < ActiveRecord::Base
 
   has_many :screens, :order => "position", :dependent => :destroy
 
+  has_many :comments, :as => :commentable
+
   acts_as_list
 
   def scope_condition

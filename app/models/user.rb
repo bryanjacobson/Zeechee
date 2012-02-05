@@ -2,6 +2,8 @@
 require 'digest'
 
 class User < ActiveRecord::Base
+  has_many :comments, :as => :commentable
+
   attr_accessor :password
 
   validates :name, :uniqueness => true, :presence => true,

@@ -17,6 +17,7 @@ class ScreensController < ApplicationController
   # GET /screens/1.xml
   def show
     @screen = Screen.find(params[:id])
+    @comment = @screen.comments.new
     @item = Item.new
     @item.screen_id = @screen.id
     @item.style = "color:navy;font-size:22px;line-height:22px;"
