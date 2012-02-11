@@ -139,6 +139,7 @@
 </div>
 <div class="grid_4">
   <%= render 'fancy_button', :link => @screen.next_screen, :text => 'Next Screen' %>
+  <br />
   <b>Comments:</b><br />
 
   <%= form_for(@comment) do |f| %>
@@ -165,7 +166,7 @@
       <%= f.select :comment_type, @comment.comment_types %>
     </div>
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit 'Create' %>
     </div>
   <% end %>
 
