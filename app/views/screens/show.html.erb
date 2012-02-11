@@ -170,11 +170,7 @@
   <% end %>
 
   <% @screen.comments.all(:order => 'created_at DESC').each do |comment| %>
-    <%= comment.content %>
-    <span style="font-size:75%;color:blue;">(<%= time_ago_in_words(comment.created_at) %> ago by
-    <%= link_to comment.user.name, comment.user %>)
-    <%= link_to 'x', comment, :confirm => 'Delete this comment?', :method => :delete %>
-    <br /></span>
+    <%= render 'comment', :comment => comment %>
   <% end %>
   
   <%= render 'fancy_button', :link => @screen.next_screen, :text => 'Next Screen' %>

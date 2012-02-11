@@ -1,0 +1,26 @@
+<% if comment.comment_type == 6 %>
+  <span style="background-color:Yellow;">
+<% elsif comment.comment_type == 5 %>
+  <span style="background-color:LightGray;">
+<% elsif comment.comment_type == 4 %>
+  <span style="background-color:LightCyan;">
+<% elsif comment.comment_type == 3 %>
+  <span style="background-color:LightGreen;">
+<% elsif comment.comment_type == 2 %>
+  <span style="background-color:LightSalmon;">
+<% else %>
+  <span style="background-color:white;">
+<% end %>
+    
+    <span style="font-size:75%;font-weight:bold;">
+      <%= comment.comment_types[comment.comment_type-1][0] %>
+    </span>
+    <%= comment.content %>
+
+    <span style="font-size:75%;color:blue;">
+      (<%= time_ago_in_words(comment.created_at) %> ago by
+      <%= link_to comment.user.name, comment.user %>)
+      <%= link_to 'x', comment, :confirm => 'Delete this comment?', :method => :delete %>
+      <br />
+    </span>
+  </span>
