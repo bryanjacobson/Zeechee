@@ -1,5 +1,7 @@
-<% if link %>
-  <div class="fancy_button">
+<div class="fancy_button">
+  <% if link %>
      <%= link_to(text, link) %>
-  </div>
-<% end %>
+  <% else %>
+     <span style="color:gray;"><%= text %></span>
+  <% end %>
+</div>

@@ -34,9 +34,12 @@ span.smedium_text {
 }
 
 div.fancy_button {
+  float: left;
   border-style: inset;
   border-color: blue;
-  border-width: 12px;
+  border-width: 8px;
+  margin: 2px;
+  width: 120px;
   font-size: 24px;
   font-weight: bold;
   padding:5px;
