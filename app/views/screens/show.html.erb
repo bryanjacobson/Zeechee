@@ -1,21 +1,15 @@
 <!-- Copyright 2012 Bryan Lee Jacobson -->
-<div class="grid_12">
+<div class="grid_16">
   <% if notice %>
     <p id="notice"><%= notice %></p>
   <% end %>
 
   <p>
-    <b>Back to Topic:</b>
-    <%= link_to @screen.topic.title, navigate_path(@screen.topic_id) %>
-    <br />
     <span class="smedium_text">
-      <%= link_to('Previous Screen', @screen.previous_screen) if @screen.previous_screen %>
+      <%= link_to(@screen.contents_link.title, @screen.contents_link) if @screen.contents_link != @screen.topic %>
+      <%= link_to @screen.topic.title, navigate_path(@screen.topic_id) %>
       <%= @screen.title %>
     </span>
-    [<%= link_to @screen.user.name, @screen.user %>]
-    <%= link_to 'Edit', edit_screen_path(@screen) %> |
-    <%= link_to 'Clone', clone_screen_path(@screen), :confirm => 'Clone screen and all contents?' %> |
-    <%= link_to 'Create Screen', new_screen_path(:topic_id => @screen.topic_id) %>
 
   </p>
 
@@ -102,6 +96,12 @@
   </table>
   <%= render 'fancy_button', :link => @screen.previous_screen, :text => 'Previous' %>
   <%= render 'fancy_button', :link => @screen.next_screen, :text => 'Next' %>
+    <span class="smedium_text">
+      <%= link_to('Contents', @screen.contents_link) %>
+    </span>
+
+  <br />
+  <br />
   <br />
 
   <%= form_for(@item) do |f| %>
@@ -137,10 +137,17 @@
       <%= f.submit %>
     </div>
   <% end %>
+
+  [Author: <%= link_to @screen.user.name, @screen.user %>]
+  <%= link_to 'Edit Screen', edit_screen_path(@screen) %> |
+  <%= link_to 'Clone Screen', clone_screen_path(@screen), :confirm => 'Clone screen and all contents?' %> |
+  <%= link_to 'New Screen', new_screen_path(:topic_id => @screen.topic_id) %>
   
-</div>
-<div class="grid_4">
-  <b>Comments:</b><br />
+<br />
+<br />
+<hr />
+
+  <b>Comment:</b><br />
 
   <%= form_for(@comment) do |f| %>
     <% if @comment.errors.any? %>
@@ -160,7 +167,7 @@
     <%= f.hidden_field :user_id %>
   
     <div class="field">
-      <%= f.text_area :content, :rows => 2, :cols => 24 %>
+      <%= f.text_area :content, :rows => 2, :cols => 70 %>
     </div>
     <div class="field">
       <%= f.select :comment_type, @comment.comment_types %>

@@ -23,9 +23,13 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.xml
   def show
-    @topic = Topic.find(params[:id])
-    @parent = @topic.parent
-    @children = @topic.children
+    #### @topic = Topic.find(params[:id])
+    #### @parent = @topic.parent
+    #### @children = @topic.children
+    @topic =  Topic.find(params[:id])
+    @topics = @topic.children.all(:order => :position)
+    @screen = Screen.new
+    @screen.topic_id = @topic.id
 
     respond_to do |format|
       format.html # show.html.erb

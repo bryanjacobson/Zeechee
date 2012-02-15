@@ -22,4 +22,10 @@ class Screen < ActiveRecord::Base
     return higher_item if higher_item
     topic.previous_screen
   end
+
+  def contents_link
+    contents = topic
+    contents = topic.parent if !topic.is_root?
+    return contents
+  end
 end
