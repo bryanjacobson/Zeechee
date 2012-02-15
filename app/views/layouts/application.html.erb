@@ -26,7 +26,7 @@
 <%= link_to 'Feedback', "http://groups.google.com/group/zeechee", :target => "_blank" %> |
 
 <% if logged_in? %>
-  Welcome <%= current_user.name %> |
+  Welcome <%= link_to current_user.name, current_user %> |
   <%= link_to 'Sign Out', logout_path %>
 <% else %>
   <%=  link_to_unless_current 'Login or Register', root_path %>

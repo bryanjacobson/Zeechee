@@ -22,7 +22,21 @@
 <br />
 <br />
 
-<IMG WIDTH=600 SRC="/images/word_cloud.jpg"></IMG>
+<span class="smedium_text">
+  <% screen = Screen.find(:first, :conditions => ["id = ?", 24]) %>
+  <% if screen %>
+    <%= link_to 'Knitting', screen %>
+  <% else %>
+    Knitting
+  <% end %>
+  <br />
+  <% screen = Screen.find(:first, :conditions => ["id = ?", 46]) %>
+  <% if screen %>
+    <%= link_to 'Time Management', screen %>
+  <% else %>
+    Time Management
+  <% end %>
+</span>
 
   </div>
 </div>
