@@ -32,8 +32,9 @@ Learnshare::Application.configure do
   # 
   # Bryan: Trying to fix a bug
   # See: http://railsforum.com/viewtopic.php?id=38540
-  ### config.serve_static_assets = false
-  config.serve_static_assets = true
+  # Changed it back, since it did not seem to help.
+  ### config.serve_static_assets = true
+  config.serve_static_assets = false
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
