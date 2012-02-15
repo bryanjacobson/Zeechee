@@ -4,14 +4,12 @@
     <p id="notice"><%= notice %></p>
   <% end %>
 
-  <p>
     <span class="smedium_text">
       <%= link_to(@screen.contents_link.title, @screen.contents_link) if @screen.contents_link != @screen.topic %>
       <%= link_to @screen.topic.title, navigate_path(@screen.topic_id) %>
       <%= @screen.title %>
     </span>
-
-  </p>
+  <br />
 
   <table>
   <% @screen.items.each do |item| %>
@@ -144,11 +142,7 @@
   <%= link_to 'New Screen', new_screen_path(:topic_id => @screen.topic_id) %>
   
 <br />
-<br />
-<hr />
-
-  <b>Comment:</b><br />
-
+.....................................................................................................<br />
   <%= form_for(@comment) do |f| %>
     <% if @comment.errors.any? %>
       <div id="error_explanation">
@@ -167,10 +161,9 @@
     <%= f.hidden_field :user_id %>
   
     <div class="field">
-      <%= f.text_area :content, :rows => 2, :cols => 70 %>
-    </div>
-    <div class="field">
       <%= f.select :comment_type, @comment.comment_types %>
+      <br />
+      <%= f.text_area :content, :rows => 2, :cols => 70 %>
     </div>
     <div class="actions">
       <%= f.submit 'Create' %>
