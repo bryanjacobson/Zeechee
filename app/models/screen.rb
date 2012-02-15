@@ -28,4 +28,24 @@ class Screen < ActiveRecord::Base
     contents = topic.parent if !topic.is_root?
     return contents
   end
+
+  # Return comments thate are type==6 Notes to self of user_id
+  def notes_to_self(user_id)
+    Comment.find(:all, :order => "created_at DESC", :conditions => ["commentable_id = ? AND commentable_type = ? AND comment_type = ? AND user_id = ?", id, 'Screen', 6, user_id])
+  end
+
+  # Return comments thate are type==5 Feedback written by user_id
+  # or all type==5 Feedback if user_id is the author
+  def feedback(user_id_param)
+    if user_id == user_id_param
+      Comment.find(:all, :order => "created_at DESC", :conditions => ["commentable_id = ? AND commentable_type = ? AND comment_type = ?", id, 'Screen', 5])
+    else
+      Comment.find(:all, :order => "created_at DESC", :conditions => ["commentable_id = ? AND commentable_type = ? AND comment_type = ? AND user_id = ?", id, 'Screen', 5, user_id_param])
+    end
+  end
+
+  # Return regular comments type < 5
+  def regular_comments
+    Comment.find(:all, :order => "created_at DESC", :conditions => ["commentable_id = ? AND commentable_type = ? AND comment_type < ?", id, 'Screen', 5])
+  end
 end

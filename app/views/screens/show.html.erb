@@ -170,7 +170,13 @@
     </div>
   <% end %>
 
-  <% @screen.comments.all(:order => 'created_at DESC').each do |comment| %>
+  <% @screen.notes_to_self(current_user.id).each do |comment| %>
+    <%= render 'comment', :comment => comment %>
+  <% end %>
+  <% @screen.feedback(current_user.id).each do |comment| %>
+    <%= render 'comment', :comment => comment %>
+  <% end %>
+  <% @screen.regular_comments.each do |comment| %>
     <%= render 'comment', :comment => comment %>
   <% end %>
 </div>
