@@ -1,3 +1,4 @@
+# Copyright 2012 Bryan Lee Jacobson
 class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.xml
