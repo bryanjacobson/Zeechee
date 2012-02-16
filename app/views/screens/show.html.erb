@@ -4,16 +4,16 @@
     <p id="notice"><%= notice %></p>
   <% end %>
 
-    <span class="smedium_text">
+    <div class="smedium_text2">
       <%= link_to(@screen.contents_link.title, @screen.contents_link) if @screen.contents_link != @screen.topic %>
       <%= link_to @screen.topic.title, navigate_path(@screen.topic_id) %>
       <%= @screen.title %>
-    </span>
-  <br />
+    </div>
 
   <table>
   <% @screen.items.each do |item| %>
     <tr>
+      <% if session[:edit_mode] %>
       <td>
       <div title="move up">
         <% if item.position > 1 %>
@@ -35,6 +35,7 @@
             <%= link_to 'E', edit_item_path(item) %><br />
           </div>
       </td>
+      <% end %>
       <td>
         <% if item.item_type_id == 3 %>
 	  <span
@@ -102,6 +103,8 @@
   <br />
   <br />
 
+  <% if session[:edit_mode] %>
+  <b>Add to screen:</b><br />
   <%= form_for(@item) do |f| %>
     <% if @item.errors.any? %>
       <div id="error_explanation">
@@ -142,6 +145,7 @@
   <%= link_to 'New Screen', new_screen_path(:topic_id => @screen.topic_id) %>
   
 <br />
+<% end %>
 .....................................................................................................<br />
   <%= form_for(@comment) do |f| %>
     <% if @comment.errors.any? %>
@@ -160,12 +164,10 @@
     <%= f.hidden_field :commentable_type %>
     <%= f.hidden_field :user_id %>
   
-    <div class="field">
-      <%= f.select :comment_type, @comment.comment_types %>
-      <br />
-      <%= f.text_area :content, :rows => 2, :cols => 70 %>
-    </div>
     <div class="actions">
+      <%= f.text_area :content, :rows => 2, :cols => 70 %>
+      <br />
+      <%= f.select :comment_type, @comment.comment_types %>
       <%= f.submit 'Create' %>
     </div>
   <% end %>

@@ -17,11 +17,11 @@ class SessionsController < ApplicationController
 
   def learn
     session[:edit_mode] = false
-    redirect_to request.env["HTTP_REFERER"], :notice => "Learn Mode"
+    redirect_to request.env["HTTP_REFERER"]
   end
 
   def edit
     session[:edit_mode] = true
-    redirect_to request.env["HTTP_REFERER"], :notice => "Edit Mode"
+    redirect_to request.env["HTTP_REFERER"]
   end
 end
