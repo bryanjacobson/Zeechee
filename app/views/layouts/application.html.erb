@@ -31,6 +31,12 @@
 <% else %>
   <%=  link_to_unless_current 'Login or Register', root_path %>
 <% end %>
+| 
+<% if session[:edit_mode] == true %>
+  <%= link_to 'Learn', learn_mode_path %> Edit
+<% else %>
+  Learn <%= link_to 'Edit', edit_mode_path %>
+<% end %>
 </div>
 <div class="clear"></div>
 

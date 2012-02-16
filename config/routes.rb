@@ -94,4 +94,9 @@ Learnshare::Application.routes.draw do
   match '/item/up/:id' => 'items#up', :as => 'up_item'
   match '/item/down/:id' => 'items#down', :as => 'down_item'
 
+  # Session mode 'Learn' or 'Edit'
+  match '/learn_mode' => "sessions#learn", :as => "learn_mode"
+  match '/edit_mode' => "sessions#edit", :as => "edit_mode"
+
+
 end
