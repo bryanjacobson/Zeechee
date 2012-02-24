@@ -32,6 +32,14 @@ class Topic < ActiveRecord::Base
     return false
   end
 
+  # If I have a screen, or I have any first level children with screens
+  # Return my first screen, or my first child's first screen, or nil
+  def learn_it
+    return screens.first if !screens.empty?
+    return children.all(:order => :position).first.learn_it if has_children?
+    nil
+  end
+
   # When traversing screens first, my screens
   def first_screen
     # print "frst: " + id.to_s + " - " + title + "\n"

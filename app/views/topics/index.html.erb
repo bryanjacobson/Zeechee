@@ -17,19 +17,21 @@
     <span class="smedium_text" title="<%= @topic.description %>">
       <%= link_to 'Edit', edit_topic_path(@topic) %>
     </span>
-    Description: <%= @topic.description %>
+    <%= @topic.description %>
+    <div>
+      <% learn_it = @topic.learn_it %>
+      <%= render("screens/fancy_button", :link => learn_it, :text => 'Learn It') if learn_it %>
+    </div>
+    
+    <hr />
   
-  <% else %>
-    <span class="big_text">
-      =TOP=
-    </span>
+    <% if !@topics.empty? %>
+    <h4>Subtopics:</h4>
+    <% end %>
+  
   <% end %>
   
-  <hr />
 
-  <% if !@topics.empty? %>
-  <h4>Subtopics:</h4>
-  <% end %>
   
   <table>
   

@@ -5,8 +5,10 @@
   <% end %>
 
     <div class="smedium_text2">
-      <%= link_to(@screen.contents_link.title, @screen.contents_link) if @screen.contents_link != @screen.topic %>
-      <%= link_to @screen.topic.title, navigate_path(@screen.topic_id) %>
+      <% if @screen.contents_link != @screen.topic %>
+        <%= link_to(@screen.contents_link.title, @screen.contents_link) %> /
+      <% end %>
+      <%= link_to @screen.topic.title, navigate_path(@screen.topic_id) %> /
       <%= @screen.title %>
     </div>
 
