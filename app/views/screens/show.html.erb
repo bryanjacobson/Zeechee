@@ -12,6 +12,7 @@
       <%= @screen.title %>
     </div>
 
+  <div style="min-height:600px;background-color:#FCDFFF;">
   <table>
   <% @screen.items.each do |item| %>
     <tr>
@@ -95,6 +96,7 @@
     </tr>
   <% end %>
   </table>
+  </div>
   <%= render 'fancy_button', :link => @screen.previous_screen, :text => 'Previous' %>
   <%= render 'fancy_button', :link => @screen.next_screen, :text => 'Next' %>
     <span class="smedium_text">
